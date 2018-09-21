@@ -1,0 +1,53 @@
+<div class="card" style="max-width: 500px;">
+    <div class="stats-card">
+
+        <div class="header">
+            <div class="float-left key">
+                <% if(data.iconSource){ %>
+                <img src="<%- data.iconSource %>" class="favicon">
+                <% } %>
+                <%- data.name %>
+            </div>
+            <div class="float-right value">
+                <% if(data.up){ %>
+                <span class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x green"></i>
+                    <i class="fas fa-check fa-stack-1x fa-inverse"></i>
+                </span>
+                <% } else { %>
+                <span class="fa-stack">
+                    <i class="fas fa-circle fa-stack-2x red"></i>
+                    <i class="fas fa-times fa-stack-1x fa-inverse"></i>
+                </span>
+                <% } %>
+            </div>
+            <div class="clearfix">
+            </div>
+        </div>
+
+        <div class="stats">
+            <div class="row">
+                <div class="col-3">
+                    <div class="key">Uptime</div>
+                    <div class="value"><%- data.uptime %>%</div>
+                </div>
+                <div class="col-3">
+                    <div class="key">Response time</div>
+                    <div class="value"><%- Math.round(data.responseTime) %> ms</div>
+                </div>
+                <div class="col-3">
+                    <div class="key">Apdex</div>
+                    <div class="value"><%- data.apdex %></div>
+                </div>
+                <div class="col-3">
+                    <div class="key">Outages</div>
+                    <div class="value"><%- data.outages %></div>
+                </div>
+            </div>
+        </div>
+        <div class="graph">
+
+        </div>
+
+    </div>
+</div>

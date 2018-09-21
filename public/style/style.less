@@ -1,0 +1,64 @@
+@import (inline) "../../node_modules/normalize.css/normalize.css";
+@import (inline) "../../node_modules/tippy.js/dist/tippy.css";
+
+@light-grey: #e1e1e1;
+@dark-grey: #333;
+@primary: #7993F9;
+@secondary: lighten(@dark-grey, 13.5%);
+@global-radius: 4px;
+@border-color: #bbb;
+@link-color: #1eaedb;
+@font-color: #222;
+
+@red: #ff7675;
+@green: #55efc4;
+
+@container-width: 1080px;
+
+html {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  min-width: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+html, body {
+  background-color: #fafbfc;
+}
+
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  color: #4a4a4a;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+a {
+  text-decoration: none;
+  color: @primary;
+}
+
+@import "grid";
+@import "cards";
+@import "nav";
+@import "buttons";
+@import "type";
+@import "form";
+
+@import "util";

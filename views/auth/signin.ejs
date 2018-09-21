@@ -1,0 +1,32 @@
+<% include ../head.ejs %>
+
+<div class="container">
+    <div class="center-div">
+        <fieldset class="card" style="width:400px; margin-top:64px;">
+            <div class="center">
+                <h1>Sign In</h1>
+
+                <form method="post" action="/signin">
+
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="password">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                    </fieldset>
+
+                    <div>
+                        <input type="submit" class="primary">
+                    </div>
+
+                    <div class="small">
+                        Dont have an account? Sign up <a href="/signup">here</a>
+                    </div>
+
+                </form>
+            </div>
+    </div>
+</div>
+
+</div>
+<% include ../foot.ejs %>

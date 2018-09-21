@@ -1,0 +1,29 @@
+<% include ../head.ejs %>
+
+<div class="container">
+    <div class="center-div">
+        <div class="card" style="width:400px; margin-top:64px;">
+            <div class="center">
+                <h1>Sign Up</h1>
+
+                <form method="post" action="/signup">
+
+                    <fieldset>
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="password">
+                        <label for="password-confirm">Confirm Password</label>
+                        <input type="password" name="password-confirm" id="password-confirm">
+                    </fieldset>
+
+                    <div>
+                        <input type="submit" class="primary">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+</div>
+<% include ../foot.ejs %>

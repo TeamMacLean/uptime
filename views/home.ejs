@@ -1,0 +1,26 @@
+<% include head.ejs %>
+
+<div class="container">
+
+    <% if(typeof sites != 'undefined'){ %>
+    <% sites.map(site=>{ %>
+
+    <% var data = {
+        name: site.name,
+        uptime: site.uptime,
+        iconSource: site.icon ? site.icon : null,
+        responseTime: site.responseTime,
+        apdex: site.apdex,
+        outages: site.outages,
+
+        up: site.up
+    }
+    %>
+    <% include _card.ejs %>
+    <% }) %>
+    <% } else { %>
+    <p>You currently have no monitors in place, why not <a href="/sites/new" class="bold">add one</a></p>
+    <% } %>
+
+</div>
+<% include foot.ejs %>

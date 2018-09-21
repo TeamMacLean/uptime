@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Uptime</title>
+    <link rel='stylesheet' href='/style/style.min.css'/>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+<nav class="nav">
+    <div class="container">
+        <div class="float-left">
+            <a class="brand" href="/">
+                <img src="/favicon.ico">
+                Uptime
+            </a>
+        </div>
+        <div class="float-right">
+            <% if(locals.signedInUser){ %>
+            <a href="/sites/new" class="btn primary">Add site</a>
+            <a href="/signout" class="btn outline">Log out</a>
+            <% } else { %>
+            <div class="buttons">
+                <a href="#" class="link">Pricing</a>
+                <a href="#" class="link desktop-only">Latency</a>
+                <a href="#" class="link desktop-only">FAQs</a>
+                <a href="/signin" class="btn outline">Log in</a>
+                <a href="/signup" class="btn primary">Register</a>
+            </div>
+            <% } %>
+        </div>
+        <div class="clearfix">
+        </div>
+</nav>
