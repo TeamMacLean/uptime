@@ -4,11 +4,13 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "node_modules/.bin/parcel build public/js/src/*.js -d public/js"
+    "build": "node_modules/.bin/parcel build public/js/src/*.js -d public/js",
+    "watch": "node_modules/.bin/parcel watch public/js/src/*.js -d public/js"
   },
   "dependencies": {
     "basic-auth": "latest",
     "bcryptjs": "^2.4.3",
+    "chart.js": "^2.7.2",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
@@ -25,6 +27,7 @@
     "thinky": "^2.3.9"
   },
   "devDependencies": {
+    "moment": "^2.22.2",
     "normalize.css": "^8.0.0",
     "parcel": "^1.9.7",
     "tippy.js": "^2.6.0"

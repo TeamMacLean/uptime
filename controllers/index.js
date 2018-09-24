@@ -4,21 +4,21 @@ const config = require('../config');
 
 module.exports = {
     index: (req, res, next) => {
-
-        if (config.showSitesToUnauth) {
-            Site.run()
+        function showFull() {
+            Site
+                .getJoin({responses: true})
+                .run()
                 .then(sites => {
-                    res.render('home', {sites});
+                    return res.render('home', {sites});
                 })
                 .catch(err => renderError(res, err));
+        }
+
+        if (config.showSitesToUnauth) {
+            showFull();
         } else {
             if (req.user) {
-                Site.filter({userID: req.user.id})
-                    .run()
-                    .then(sites => {
-                        res.render('home', {sites});
-                    })
-                    .catch(err => renderError(res, err));
+                showFull();
             } else {
                 res.render('index');
             }

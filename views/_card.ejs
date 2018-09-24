@@ -4,23 +4,23 @@
         <div class="header">
             <div class="float-left key">
                 <% if(data.iconSource){ %>
-                <img src="<%- data.iconSource %>" class="favicon">
+                    <img src="<%- data.iconSource %>" class="favicon">
                 <% } %>
                 <% if(data.link){ %>
-                <a href="<%- data.link %>"><%- data.name %></a>
+                    <a href="<%- data.link %>"><%- data.name %></a>
                 <% } else { %>
-                <%- data.name %>
+                    <%- data.name %>
                 <% } %>
             </div>
             <div class="float-right value">
                 <div class="up-badge">
                     <% if(data.up){ %>
-                    <span class="fa-stack">
+                        <span class="fa-stack">
                     <i class="fas fa-circle fa-stack-2x green"></i>
                     <i class="fas fa-check fa-stack-1x fa-inverse"></i>
                 </span>
                     <% } else { %>
-                    <span class="fa-stack">
+                        <span class="fa-stack">
                     <i class="fas fa-circle fa-stack-2x red"></i>
                     <i class="fas fa-times fa-stack-1x fa-inverse"></i>
                 </span>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="col-3">
                     <div class="key">Apdex</div>
-                    <div class="value"><%- data.apdex %></div>
+                    <div class="value"><%- data.apdex.toFixed(2) %></div>
                 </div>
                 <div class="col-3">
                     <div class="key">Outages</div>
@@ -51,9 +51,70 @@
                 </div>
             </div>
         </div>
-        <div class="graph">
-
-        </div>
+        <% if(data.responses){ %>
+            <div class="graph">
+                <canvas id="chart-<%- data.name %>" width="100%" height="20px"></canvas>
+            </div>
+        <% } %>
 
     </div>
 </div>
+<% if(data.responses){ %>
+    <script>
+        var responses = <%- JSON.stringify(data.responses.slice(0, 20)) %>;
+
+        var ctx = document.getElementById("chart-<%- data.name %>").getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: responses.map(function (r) {
+                    console.log(r.createdAt);
+                    return moment(r.createdAt).calendar();
+                }),
+                datasets: [{
+                    label: 'ms',
+                    data: responses.map(function (r) {
+                        return r.responseTime.toFixed(2);
+                    }),
+                    fill: 'start',
+                    backgroundColor: [
+                        '#64EDC6'
+                    ],
+                    borderColor: [
+                        '#59b993'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                legend: {
+                    display: false
+                },
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false,
+                            beginAtZero: true
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false //this will remove only the label
+                        }
+                    }]
+                },
+                tooltip: {
+                    mode: 'label'
+                }
+            }
+        });
+    </script>
+<% } %>
