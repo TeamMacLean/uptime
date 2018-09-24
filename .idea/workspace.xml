@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="f5fe0f45-95ad-4325-aeff-42f64cd8e54c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/models/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/site.js" afterDir="false" />
-    </list>
+    <list default="true" id="f5fe0f45-95ad-4325-aeff-42f64cd8e54c" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +50,7 @@
         <counts>
           <entry key="ejs" value="4694" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="9191" />
+          <entry key="js" value="9193" />
           <entry key="json" value="36" />
           <entry key="less" value="2424" />
           <entry key="www" value="40" />
@@ -62,7 +60,7 @@
         <counts>
           <entry key="EJS" value="4694" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="9231" />
+          <entry key="JavaScript" value="9233" />
           <entry key="Less" value="2424" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -83,8 +81,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="701">
-              <caret line="83" column="71" selection-start-line="83" selection-start-column="71" selection-end-line="83" selection-end-column="71" />
+            <state relative-caret-position="611">
+              <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -692,8 +690,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="701">
-          <caret line="83" column="71" selection-start-line="83" selection-start-column="71" selection-end-line="83" selection-end-column="71" />
+        <state relative-caret-position="611">
+          <caret line="77" column="21" selection-start-line="77" selection-start-column="21" selection-end-line="77" selection-end-column="21" />
         </state>
       </provider>
     </entry>

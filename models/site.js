@@ -75,7 +75,7 @@ Site.define('updateStats', function () {
             site.responseTime = averageResponse(responses);
 
             const timesDown = responses.reduce((total, current) => {
-                if (current.up) {
+                if (!current.up) {
                     total += 1;
                 }
                 return total;
