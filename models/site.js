@@ -12,7 +12,7 @@ const Site = thinky.createModel('Site', {
     userID: type.string().required(),
     createdAt: type.date().default(r.now()),
     updatedAt: type.date(),
-    icon: type.string(),
+    icon: type.string().default('/img/potato.png'),
     up: type.boolean().default(true),
     uptime: type.number().default(100),
     responseTime: type.number().default(0),
