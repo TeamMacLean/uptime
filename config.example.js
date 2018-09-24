@@ -4,5 +4,9 @@ module.exports = {
     secret: 'Change Me',
     showSitesToUnauth: true,
     allowRegistration: false,
-    apdexT: 0.2
+    apdexT: 0.2,
+    slack:{
+        enabled:false,
+        webhookURL: 'N/A'
+    }
 };

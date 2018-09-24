@@ -5,6 +5,8 @@ const r = thinky.r;
 const favicon = require('favicon');
 const apdex = require('../lib/apdex');
 
+const notifications = require('../lib/notifications');
+
 const Site = thinky.createModel('Site', {
     id: type.string(),
     name: type.string().required(),
@@ -61,18 +63,18 @@ Site.define('updateStats', function () {
         .then(responses => {
 
             if (responses[0].up) {
+                if (!site.up) {
+                    notifications.siteUp(site);
+                }
                 site.up = true;
             } else {
                 if (site.up) {
                     site.outages = site.outages + 1;
-
-                    //TODO handle outage!!!
+                    notifications.siteDown(site);
                 }
                 site.up = false;
 
             }
-
-            site.responseTime = averageResponse(responses);
 
             const timesDown = responses.reduce((total, current) => {
                 if (!current.up) {
@@ -82,10 +84,8 @@ Site.define('updateStats', function () {
             }, 0);
 
             site.uptime = 100 - ((timesDown * 100) / responses.length);
-            // site.uptime = 100 - (site.outages * 100) / responses.length; //...not ideal
-
+            site.responseTime = averageResponse(responses);
             site.up = responses[0].up;
-
             site.apdex = apdex(responses);
 
             site.save();

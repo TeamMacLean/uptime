@@ -24,7 +24,8 @@
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "session-rethinkdb": "^2.0.1",
-    "thinky": "^2.3.9"
+    "thinky": "^2.3.9",
+    "request": "latest"
   },
   "devDependencies": {
     "moment": "^2.22.2",
