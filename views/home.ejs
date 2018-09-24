@@ -15,7 +15,7 @@
                     apdex: site.apdex,
                     outages: site.outages,
                     up: site.up,
-                    responses: site.responses || []
+                    responses: site.responses.slice(site.responses.length - 30, site.responses.length)
                 }
                 %>
 
