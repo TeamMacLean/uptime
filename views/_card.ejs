@@ -61,14 +61,13 @@
 </div>
 <% if(data.responses){ %>
     <script>
-        var responses = <%- JSON.stringify(data.responses.slice(0, 20)) %>;
+        var responses = <%- JSON.stringify(data.responses) %>;
 
         var ctx = document.getElementById("chart-<%- data.name %>").getContext('2d');
         var myChart = new Chart(ctx, {
             type: 'line',
             data: {
                 labels: responses.map(function (r) {
-                    console.log(r.createdAt);
                     return moment(r.createdAt).calendar();
                 }),
                 datasets: [{
