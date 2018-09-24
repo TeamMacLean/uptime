@@ -74,7 +74,15 @@ Site.define('updateStats', function () {
 
             site.responseTime = averageResponse(responses);
 
-            site.uptime = 100 - (site.outages * 100) / responses.length; //...not ideal
+            const timesDown = responses.reduce((total, current) => {
+                if (current.up) {
+                    total += 1;
+                }
+                return total;
+            }, 0);
+
+            site.uptime = 100 - ((timesDown * 100) / responses.length);
+            // site.uptime = 100 - (site.outages * 100) / responses.length; //...not ideal
 
             site.up = responses[0].up;
 
