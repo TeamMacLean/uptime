@@ -2,8 +2,8 @@ const thinky = require('../lib/thinky');
 const type = thinky.type;
 const r = thinky.r;
 
-const request = require('request');
-
+const favicon = require('favicon');
+const apdex = require('../lib/apdex');
 
 const Site = thinky.createModel('Site', {
     id: type.string(),
@@ -12,7 +12,6 @@ const Site = thinky.createModel('Site', {
     userID: type.string().required(),
     createdAt: type.date().default(r.now()),
     updatedAt: type.date(),
-
     icon: type.string(),
     up: type.boolean().default(true),
     uptime: type.number().default(100),
@@ -31,49 +30,55 @@ Site.pre('save', function (next) {
     const site = this;
     site.updatedAt = new Date();
 
-    const possibleIconPath = new URL(site.url).origin + '/favicon.ico';
-
-    request({url: possibleIconPath, method: 'HEAD'}, function (err, res) {
+    favicon(site.url, function (err, favicon_url) {
         if (err) {
-            site.icon = '';
+            console.error('could not get favicon for', site.url);
         } else {
-            if (/4\d\d/.test(res.statusCode) === false) {
-                //it exists
-                site.icon = possibleIconPath;
-            }
+            site.icon = favicon_url;
         }
         next();
     });
 
-
 });
-
-const averageOfMostRecentNum = 3;
 
 Site.define('updateStats', function () {
     console.log('updating stats');
     const site = this;
+
+    function averageResponse(responses) {
+        const averages = 3;
+        const sub = responses.slice(0, averages);
+        return sub.reduce((total, current) => {
+            return total + current.responseTime
+        }, 0) / averages;
+
+    }
+
     Response
         .orderBy({index: r.desc("createdAt")})
         .filter({siteID: site.id})
         .run()
         .then(responses => {
 
-            //getting outages
-            //TODO this SHOULD be 1 outage reported each time it comes up from being down
-            site.outages = responses.reduce((total, current) => {
-                if (!current.up) {
-                    total += 1;
-                }
-                return total;
-            }, 0);
+            if (responses[0].up) {
+                site.up = true;
+            } else {
+                if (site.up) {
+                    site.outages = site.outages + 1;
 
-            site.responseTime = responses[0].responseTime;
-            site.uptime = responses.length + site.outages / 100;
+                    //TODO handle outage!!!
+                }
+                site.up = false;
+
+            }
+
+            site.responseTime = averageResponse(responses);
 
             site.uptime = 100 - (site.outages * 100) / responses.length; //...not ideal
 
             site.up = responses[0].up;
+
+            site.apdex = apdex(responses);
 
             site.save();
 

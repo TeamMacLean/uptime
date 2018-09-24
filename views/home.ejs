@@ -3,21 +3,31 @@
 <div class="container">
 
     <% if(typeof sites != 'undefined'){ %>
-    <% sites.map(site=>{ %>
+    <div class="row">
+        <% sites.map((site, index)=>{ %>
 
-    <% var data = {
-        name: site.name,
-        uptime: site.uptime,
-        iconSource: site.icon ? site.icon : null,
-        responseTime: site.responseTime,
-        apdex: site.apdex,
-        outages: site.outages,
+        <% var data = {
+            link: "/sites/" + site.id,
+            name: site.name,
+            uptime: site.uptime,
+            iconSource: site.icon ? site.icon : null,
+            responseTime: site.responseTime,
+            apdex: site.apdex,
+            outages: site.outages,
+            up: site.up
+        }
+        %>
 
-        up: site.up
-    }
-    %>
-    <% include _card.ejs %>
-    <% }) %>
+        <% if (index !== 0 && index % 2 == 0){ %>
+    </div>
+    <div class="row">
+        <% } %>
+
+        <div class="col-6">
+            <% include _card.ejs %>
+        </div>
+        <% }) %>
+    </div>
     <% } else { %>
     <p>You currently have no monitors in place, why not <a href="/sites/new" class="bold">add one</a></p>
     <% } %>

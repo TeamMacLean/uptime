@@ -2,6 +2,7 @@ const User = require('../models/user');
 const renderError = require('../lib/renderError');
 const passport = require('passport');
 const bcrypt = require('bcryptjs');
+const config = require('../config');
 
 module.exports = {
     signin: (req, res, next) => {
@@ -30,6 +31,9 @@ module.exports = {
 
 
     signup: (req, res, next) => {
+        if (!config.allowRegistration) {
+            return res.status(400).send('Signups are currently disabled');
+        }
         return res.render('auth/signup');
     },
     signupPost: (req, res, next) => {

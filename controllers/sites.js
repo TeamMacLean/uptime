@@ -39,6 +39,15 @@ module.exports = {
     },
     show: (req, res, next) => {
 
+        const id = req.params.id;
+
+        Site.get(id)
+            .run()
+            .then(site => {
+                return res.render('sites/show', {site});
+            })
+            .catch(err => renderError(res, err));
+
     }
 
 };

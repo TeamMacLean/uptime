@@ -7,21 +7,22 @@
     "build": "node_modules/.bin/parcel build public/js/src/*.js -d public/js"
   },
   "dependencies": {
+    "basic-auth": "latest",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
     "express-session": "^1.15.6",
+    "favicon": "0.0.2",
+    "favicon-url": "0.0.5",
     "http-errors": "~1.6.2",
     "less-middleware": "~2.2.1",
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "session-rethinkdb": "^2.0.1",
-    "thinky": "^2.3.9",
-    "basic-auth": "latest",
-    "request": "latest"
+    "thinky": "^2.3.9"
   },
   "devDependencies": {
     "normalize.css": "^8.0.0",

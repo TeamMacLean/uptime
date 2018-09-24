@@ -1,4 +1,4 @@
-<div class="card" style="max-width: 500px;">
+<div class="card">
     <div class="stats-card">
 
         <div class="header">
@@ -6,20 +6,26 @@
                 <% if(data.iconSource){ %>
                 <img src="<%- data.iconSource %>" class="favicon">
                 <% } %>
+                <% if(data.link){ %>
+                <a href="<%- data.link %>"><%- data.name %></a>
+                <% } else { %>
                 <%- data.name %>
+                <% } %>
             </div>
             <div class="float-right value">
-                <% if(data.up){ %>
-                <span class="fa-stack">
+                <div class="up-badge">
+                    <% if(data.up){ %>
+                    <span class="fa-stack">
                     <i class="fas fa-circle fa-stack-2x green"></i>
                     <i class="fas fa-check fa-stack-1x fa-inverse"></i>
                 </span>
-                <% } else { %>
-                <span class="fa-stack">
+                    <% } else { %>
+                    <span class="fa-stack">
                     <i class="fas fa-circle fa-stack-2x red"></i>
                     <i class="fas fa-times fa-stack-1x fa-inverse"></i>
                 </span>
-                <% } %>
+                    <% } %>
+                </div>
             </div>
             <div class="clearfix">
             </div>

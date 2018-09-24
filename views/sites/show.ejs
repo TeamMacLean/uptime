@@ -1,0 +1,20 @@
+<% include ../head.ejs %>
+
+<div class="container">
+
+    <% var data = {
+        name: site.name,
+        uptime: site.uptime,
+        iconSource: site.icon ? site.icon : null,
+        responseTime: site.responseTime,
+        apdex: site.apdex,
+        outages: site.outages,
+        up: site.up
+    }
+    %>
+
+    <% include ../_card.ejs %>
+
+</div>
+
+<% include ../foot.ejs %>

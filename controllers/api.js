@@ -32,7 +32,7 @@ module.exports = {
 
                         }).save()
                             .then(savedResponse => {
-                                console.log(savedResponse);
+                                // console.log(savedResponse);
 
                                 site.updateStats();
 

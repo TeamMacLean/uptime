@@ -30,6 +30,9 @@ router.route('/sites/new')
     .all(isAuthenticated)
     .get(sites.new)
     .post(sites.newPost);
+router.route('/sites/:id')
+    .all(isAuthenticated)
+    .get(sites.show);
 
 
 //API
@@ -44,8 +47,6 @@ router.route('/api/responses')
 function isAuthenticatedAPI(req, res, next) {
 
     const credentials = basicAuth(req);
-
-    console.log(credentials);
 
     if (credentials && credentials.name && credentials.pass) {
 
