@@ -3,5 +3,6 @@ module.exports = {
     db: 'uptime',
     secret: 'Change Me',
     showSitesToUnauth: true,
-    allowRegistration: false
+    allowRegistration: false,
+    apdexT: 0.2
 };
