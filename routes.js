@@ -34,6 +34,11 @@ router.route('/sites/:id')
     .all(isAuthenticated)
     .get(sites.show);
 
+router.route('/sites/:id/edit')
+    .all(isAuthenticated)
+    .get(sites.edit)
+    .post(sites.editPost);
+
 
 //API
 router.route('/api/sites')

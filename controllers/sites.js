@@ -28,12 +28,32 @@ module.exports = {
         }
 
     },
-    /* edit: (req, res, next) => {
+    edit: (req, res, next) => {
+        const id = req.params.id;
+        Site.get(id)
+            .then(site => {
+                return res.render('sites/edit', {site})
+            })
+            .catch(err => renderError(res, err));
+    },
+    editPost: (req, res, next) => {
+        const id = req.params.id;
+        const name = req.body.name;
+        const url = req.body.url;
 
-     },
-     editPost: (req, res, next) => {
+        Site.get(id)
+            .then(site => {
+                site.name = name;
+                site.url = url;
+                site.save()
+                    .then(savedSite => {
+                        return res.redirect('/sites/'+site.id);
+                    })
+                    .catch(err => renderError(res, err))
+            })
+            .catch(err => renderError(res, err));
 
-     },*/
+    },
     remove: (req, res, next) => {
 
     },

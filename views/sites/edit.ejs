@@ -2,18 +2,18 @@
 
 <div class="container">
 
-    <h1 class="center">New Site</h1>
+    <h1 class="center">Edit <%- site.name %></h1>
 
-    <form action="/sites/new" method="post">
+    <form action="/sites/<%- site.id %>/edit" method="post">
 
         <div class="row">
             <div class="col-6">
                 <label for="name">Site Name</label>
-                <input class="u-full-width" type="text" placeholder="My Website" id="name" name="name" required>
+                <input class="u-full-width" type="text" id="name" name="name" value="<%- site.name %>" required>
             </div>
             <div class="col-6">
                 <label for="url">URL</label>
-                <input class="u-full-width" type="url" placeholder="http://example.org" id="url" name="url" required>
+                <input class="u-full-width" type="url" id="url" name="url" value="<%- site.url %>" required>
             </div>
         </div>
         <input class="btn primary" type="submit" value="Submit">
