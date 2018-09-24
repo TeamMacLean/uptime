@@ -68,6 +68,7 @@
             type: 'line',
             data: {
                 labels: responses.map(function (r) {
+                    console.log(r.createdAt);
                     return moment(r.createdAt).calendar();
                 }),
                 datasets: [{
