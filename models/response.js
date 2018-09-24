@@ -6,7 +6,9 @@ const r = thinky.r;
 const Response = thinky.createModel('Response', {
     id: type.string(),
     siteID: type.string().required(),
+    date: type.date().required().default(r.now),
     createdAt: type.date().default(r.now()),
+    updatedAt: type.date(),
     statusCode: type.number().required(),
     status: type.string().required(),
     up: type.boolean().required(),

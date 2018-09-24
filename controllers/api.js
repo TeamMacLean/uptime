@@ -28,7 +28,8 @@ module.exports = {
                             statusCode: req.body.statusCode,
                             status: req.body.status,
                             responseTime: req.body.responseTime,
-                            up: req.body.up
+                            up: req.body.up,
+                            date: req.body.date
 
                         }).save()
                             .then(savedResponse => {
