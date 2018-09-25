@@ -13,7 +13,7 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.13);
   //-webkit-animation: fadein 0.2s ease;
   //animation: fadein 0.2s ease;
-  color:@font-color;
+  color: @font-color;
 }
 
 .stats-card {
@@ -27,11 +27,11 @@
     margin-bottom: 20px;
     width: 100%;
 
-    .up-badge{
+    .up-badge {
       font-size: 0.8rem;
     }
 
-    a{
+    a {
       color: @font-color;
     }
 
@@ -51,12 +51,12 @@
 
   }
 
-  .graph{
+  .graph {
     margin-top: 20px;
   }
 
   .stats {
-    .key, .value{
+    .key, .value {
       display: block;
       text-align: center;
     }
@@ -64,9 +64,30 @@
       font-size: 0.7rem;
     }
     .value {
-      color:#000000;
+      color: #000000;
       font-size: 0.9rem;
       font-weight: bold;
+    }
+  }
+}
+
+@media (max-width: @responsive-point) {
+  .stats-card {
+    .stats {
+      .key, .value {
+        font-size: 1rem;
+      }
+      .key {
+        float: left;
+        margin-right: 8px;
+        &:after{
+          content:':'
+        }
+      }
+      .value{
+        margin-bottom: 8px;
+        display: inline-block;
+      }
     }
   }
 }
