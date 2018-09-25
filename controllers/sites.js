@@ -1,5 +1,6 @@
 const renderError = require('../lib/renderError');
 const Site = require('../models/site');
+const thinky = require('../lib/thinky');
 
 module.exports = {
 
@@ -62,6 +63,13 @@ module.exports = {
         const id = req.params.id;
 
         Site.get(id)
+            .getJoin({
+                responses: {
+                    _apply: function (sequence) {
+                        return sequence.orderBy(thinky.r.asc('createdAt'))
+                    }
+                }
+            })
             .run()
             .then(site => {
                 return res.render('sites/show', {site});

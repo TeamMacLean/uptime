@@ -7,6 +7,7 @@ module.exports = {
     index: (req, res, next) => {
         function showFull() {
             Site
+                .orderBy(thinky.r.asc('name'))
                 .getJoin({
                     responses: {
                         _apply: function (sequence) {
