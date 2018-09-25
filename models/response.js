@@ -6,7 +6,7 @@ const r = thinky.r;
 const Response = thinky.createModel('Response', {
     id: type.string(),
     siteID: type.string().required(),
-    date: type.string().required(),
+    date: type.string(),
     createdAt: type.date().default(r.now()),
     updatedAt: type.date(),
     statusCode: type.number().required(),
@@ -16,6 +16,16 @@ const Response = thinky.createModel('Response', {
 });
 
 module.exports = Response;
+
+Response.pre('save', function (next) {
+
+    if (!this.date) {
+        this.date = this.createdAt;
+    }
+    next();
+
+});
+
 
 Response.ensureIndex("createdAt");
 
