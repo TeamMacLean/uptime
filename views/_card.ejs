@@ -69,7 +69,7 @@
 
         var ctx = document.getElementById("chart-<%- data.name %>").getContext('2d');
         var myChart = new Chart(ctx, {
-            type: 'bar',
+            type: 'line',//'bar',
             data: {
                 labels: responses.map(function (r) {
                     return moment(r.createdAt).calendar();
@@ -79,28 +79,28 @@
                     data: responses.map(function (r) {
                         return r.responseTime.toFixed(2);
                     }),
-                    fill: 'start',
+                    fill: false,//'start',
                     backgroundColor: responses.map(function (r) {
                         return r.up ? '#64EDC6' : '#ff7675';
                     }),
-                    // backgroundColor: [
-                    //     '#64EDC6'
-                    // ],
-                    borderColor: responses.map(function (r) {
-                        return r.up ? '#64EDC6' : '#ff7675';
-                    }),
-                    // borderColor: [
-                    //     '#64EDC6'
-                    // ],
-                    borderWidth: 1
+                    // // backgroundColor: [
+                    // //     '#64EDC6'
+                    // // ],
+                    // borderColor: responses.map(function (r) {
+                    //     return r.up ? '#64EDC6' : '#ff7675';
+                    // }),
+                    borderColor: [
+                        '#64EDC6'
+                    ],
+                    // borderWidth: 1
                 }]
             },
             options: {
-                animation: false,
+                // animation: false,
                 legend: {
                     display: false
                 },
-                // elements: {point: {radius: 0, hitRadius: 30, hoverRadius: 0}},
+                elements: {point: {radius: 0, hitRadius: 30, hoverRadius: 0}},
                 scales: {
                     yAxes: [{
                         gridLines: {
@@ -108,7 +108,7 @@
                             drawBorder: false
                         },
                         ticks: {
-                            display: false,
+                            // display: false,
                             suggestedMin: 0,
                             beginAtZero: true
                         }

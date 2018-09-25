@@ -12,7 +12,7 @@ const Response = thinky.createModel('Response', {
     statusCode: type.number().required(),
     status: type.string().required(),
     up: type.boolean().required(),
-    responseTime: type.number().required()
+    responseTime: type.number().required().default(10000)
 });
 
 module.exports = Response;
