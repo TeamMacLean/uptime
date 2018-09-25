@@ -11,7 +11,7 @@ module.exports = {
                 .getJoin({
                     responses: {
                         _apply: function (sequence) {
-                            return sequence.orderBy(thinky.r.asc('createdAt'))
+                            return sequence.orderBy(thinky.r.desc('createdAt'))
                         }
                     }
                 })
