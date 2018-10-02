@@ -12,22 +12,20 @@ const Response = thinky.createModel('Response', {
     statusCode: type.number().required(),
     status: type.string().required(),
     up: type.boolean().required(),
-    responseTime: type.number().required().default(10000)
+    responseTime: type.number().required().default(10000),
+    source: type.string().default("unknown")
 });
 
 module.exports = Response;
 
 Response.pre('save', function (next) {
-
     if (!this.up) {
         this.responseTime = 0;
     }
-
     if (!this.date) {
         this.date = this.createdAt;
     }
     next();
-
 });
 
 
