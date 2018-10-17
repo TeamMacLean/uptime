@@ -6,14 +6,16 @@ const thinky = require('../lib/thinky');
 module.exports = {
     index: (req, res, next) => {
         function showFull() {
+            const showGraphs = config.graphsOnIndex ? {
+                _apply: function (sequence) {
+                    return sequence.orderBy(thinky.r.desc('createdAt')).limit(100)
+                }
+            } : false;
             Site
                 .orderBy(thinky.r.asc('name'))
                 .getJoin({
-                    responses: {
-                        _apply: function (sequence) {
-                            return sequence.orderBy(thinky.r.desc('createdAt')).limit(100)
-                        }
-                    }
+                    responses: showGraphs
+
                 })
                 .run()
                 .then(sites => {
