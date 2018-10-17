@@ -15,7 +15,7 @@
                     apdex: site.apdex,
                     outages: site.outages,
                     up: site.up,
-                    responses: site.responses.slice(0, 29).reverse()
+                    responses: locals.graphsOnIndex ? site.responses.slice(0, 29).reverse() : null
                 }
                 %>
 

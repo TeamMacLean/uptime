@@ -8,5 +8,6 @@ module.exports = {
     slack:{
         enabled:false,
         webhookURL: 'N/A'
-    }
+    },
+    graphsOnIndex:false
 };

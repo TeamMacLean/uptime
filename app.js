@@ -50,6 +50,9 @@ app.use((req, res, next) => {
             res.locals.signedInUser.iconURL = req.user.iconURL;
         }
     }
+
+    res.locals.graphsOnIndex = config.graphsOnIndex;
+
     return next();
 });
 
