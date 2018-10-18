@@ -48,7 +48,7 @@ module.exports = {
                 site.url = url;
                 site.save()
                     .then(savedSite => {
-                        return res.redirect('/sites/'+site.id);
+                        return res.redirect('/sites/' + site.id);
                     })
                     .catch(err => renderError(res, err))
             })
@@ -63,13 +63,6 @@ module.exports = {
         const id = req.params.id;
 
         Site.get(id)
-            .getJoin({
-                responses: {
-                    _apply: function (sequence) {
-                        return sequence.orderBy(thinky.r.desc('createdAt')).limit(100)
-                    }
-                }
-            })
             .run()
             .then(site => {
                 return res.render('sites/show', {site});

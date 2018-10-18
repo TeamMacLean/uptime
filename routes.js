@@ -54,6 +54,9 @@ router.route('/api/responses/:siteID')
 
 function isAuthenticatedAPI(req, res, next) {
 
+    if (req.isAuthenticated()) {
+        return next();
+    }
     const credentials = basicAuth(req);
 
     if (credentials && credentials.name && credentials.pass) {
@@ -73,23 +76,22 @@ function isAuthenticatedAPI(req, res, next) {
                                 return next();
                             } else {
                                 //failed, dono why
-                                res.status(401).send('failed to log you in');
+                                return res.status(401).send('failed to log you in');
                             }
                         });
                     } else {
                         //wrong password
-                        res.status(401).send('username and password not valid');
+                        return res.status(401).send('username and password not valid');
                     }
                 } else {
                     //no such user
-                    res.status(401).send('username and password not valid');
+                    return res.status(401).send('username and password not valid');
                 }
             })
     } else {
         //username or password not received
-        res.status(401).send('username and password not received');
+        return res.status(401).send('username and password not received');
     }
-
 
 }
 

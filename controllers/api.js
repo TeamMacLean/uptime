@@ -1,5 +1,6 @@
 const Site = require('../models/site');
 const Response = require('../models/response');
+const thinky = require('../lib/thinky');
 
 module.exports = {
     listSites: (req, res, next) => {
@@ -16,23 +17,24 @@ module.exports = {
 
     },
     getResponses: (req, res, next) => {
-
-        Site.get(req.params.siteID).getJoin({
-            responses: {
-                _apply: function (sequence) {
-                    return sequence
-                        .filter(function (row) {
-                            return row('createdAt').during(thinky.r.now().sub(1 * 24 * 60 * 60), thinky.r.now()) //2 days ago - now
-                        })
-                        .orderBy(thinky.r.desc('createdAt')).limit(100)
+        Site.get(req.params.siteID)
+            .getJoin({
+                responses: {
+                    _apply: function (sequence) {
+                        return sequence
+                            // .filter(function (row) {
+                            //     return row('createdAt').during(thinky.r.now().sub(24 * 60 * 60), thinky.r.now()) //2 days ago - now
+                            // })
+                            .orderBy(thinky.r.desc('createdAt')).limit(100)
+                    }
                 }
-            }
-        })
+            })
             .run()
             .then(site => {
                 return res.json(site);
             })
             .catch(err => {
+                console.error(err);
                 return res.status(400).json({error: err});
             })
     },
