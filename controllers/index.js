@@ -14,7 +14,7 @@ module.exports = {
                     responses: {
                         _apply: function (sequence) {
                             return sequence
-                                .filter(  thinky.r.row('transactionDate').during(r.time(2016, 1, 1,"Z"), r.time(2016, 6, 8,"Z")))
+                                .filter(  thinky.r.row('transactionDate').during(thinky.r.time(2016, 1, 1,"Z"), thinky.r.time(2016, 6, 8,"Z")))
                                 .orderBy(thinky.r.desc('createdAt')).limit(100)
                         }
                     }

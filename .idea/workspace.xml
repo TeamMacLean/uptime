@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5fe0f45-95ad-4325-aeff-42f64cd8e54c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/config.example.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.example.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/controllers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -56,7 +55,7 @@
         <counts>
           <entry key="ejs" value="5263" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="10489" />
+          <entry key="js" value="10491" />
           <entry key="json" value="36" />
           <entry key="less" value="2618" />
           <entry key="www" value="40" />
@@ -66,7 +65,7 @@
         <counts>
           <entry key="EJS" value="5263" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="10529" />
+          <entry key="JavaScript" value="10531" />
           <entry key="Less" value="2618" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -79,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/controllers/index.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="240">
-              <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+              <caret line="16" column="119" selection-start-line="16" selection-start-column="119" selection-end-line="16" selection-end-column="119" />
             </state>
           </provider>
         </entry>
@@ -746,7 +745,7 @@
     <entry file="file://$PROJECT_DIR$/controllers/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="49" selection-start-line="16" selection-start-column="49" selection-end-line="16" selection-end-column="49" />
+          <caret line="16" column="119" selection-start-line="16" selection-start-column="119" selection-end-line="16" selection-end-column="119" />
         </state>
       </provider>
     </entry>
