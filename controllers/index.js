@@ -15,7 +15,7 @@ module.exports = {
                         _apply: function (sequence) {
                             return sequence
                                 .filter(function (row) {
-                                    return row.during(thinky.r.now().sub(2 * 24 * 60 * 60), thinky.r.now(), {index: 'createdAt'}) //2 days ago - now
+                                    return row('createdAt').during(thinky.r.now().sub(2 * 24 * 60 * 60), thinky.r.now()) //2 days ago - now
                                 })
                                 .orderBy(thinky.r.desc('createdAt')).limit(100)
                         }
