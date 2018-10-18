@@ -63,6 +63,7 @@
 </div>
 <script>
 
+    <% if(data.siteID){ %>
     const Http = new XMLHttpRequest();
     const url = '/api/responses/<%- data.siteID %>';
     Http.open("GET", url);
@@ -70,6 +71,6 @@
     Http.onreadystatechange = (e) => {
         console.log(Http.responseText)
     }
-
+    <% } %>
 
 </script>
