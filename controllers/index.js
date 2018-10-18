@@ -24,7 +24,6 @@ module.exports = {
             // }
             site.run()
                 .then(sites => {
-                    console.log(sites.map(s => s.responses.length), 'responses');
                     return res.render('home', {sites});
                 })
                 .catch(err => renderError(res, err));
