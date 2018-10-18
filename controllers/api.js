@@ -17,15 +17,51 @@ module.exports = {
 
     },
     getResponses: (req, res, next) => {
+
+        const hour = 60 * 60;
+        const day = hour * 24;
+        const week = day * 7;
+        const month = day * 31;
+        const year = day * 365;
+
+        let range = day; //24 hours
+
+        if (req.params.range) {
+
+            switch (req.params.range) {
+                case 'hour':
+                    range = hour;
+                    break;
+                case 'day':
+                    range = day;
+                    break;
+                case 'week':
+                    range = week;
+                    break;
+                case 'month':
+                    range = month;
+                    break;
+                case 'year':
+                    range = year;
+                    break;
+                default:
+                    range = day;
+                    break;
+            }
+
+
+        }
+
         Site.get(req.params.siteID)
             .getJoin({
                 responses: {
                     _apply: function (sequence) {
                         return sequence
-                            // .filter(function (row) {
-                            //     return row('createdAt').during(thinky.r.now().sub(24 * 60 * 60), thinky.r.now()) //2 days ago - now
-                            // })
-                            .orderBy(thinky.r.desc('createdAt')).limit(100)
+                            .filter(function (row) {
+                                return row('createdAt').during(thinky.r.now().sub(range), thinky.r.now()) //1 day ago - now
+                            })
+                            .orderBy(thinky.r.desc('createdAt'))
+                        //.limit(100) shouldnt need to limit for now, might use skip though
                     }
                 }
             })

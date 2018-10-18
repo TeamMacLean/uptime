@@ -57,50 +57,15 @@
         </div>
         <div class="graph">
             <canvas id="chart-<%- data.siteID %>" width="100%" height="20px"></canvas>
+            <span class="link" onclick="window.loadGraph('<%- data.siteID %>','hour')">Hour</span>
+            <span class="link" onclick="window.loadGraph('<%- data.siteID %>','day')">Day</span>
+            <span class="link" onclick="window.loadGraph('<%- data.siteID %>','week')">Week</span>
+            <span class="link" onclick="window.loadGraph('<%- data.siteID %>','month')">Month</span>
+            <span class="link" onclick="window.loadGraph('<%- data.siteID %>','year')">Year</span>
         </div>
 
     </div>
 </div>
 <script>
-
-    <% if(data.siteID){ %>
-
-    window.queue.place(function () {
-
-        try {
-            var Http = new XMLHttpRequest();
-            var url = '/api/responses/<%- data.siteID %>';
-            console.log('getting response', url);
-            Http.open("GET", url);
-            Http.send();
-            var doneHere = false;
-
-            Http.onreadystatechange = (e) => {
-                if (Http.readyState === 4 && !doneHere) {
-                    doneHere = true;
-                    try {
-                        var site = JSON.parse(Http.responseText);
-                        if (site.responses) {
-                            buildGraph(site.id, site.responses);
-                        }
-                        window.queue.next();
-                    } catch (err) {
-                        console.error(err);
-                        window.queue.next();
-                    }
-                }
-            }
-        } catch (err) {
-            console.error(err);
-            window.queue.next();
-        }
-    });
-
-
-
-
-
-
-    <% } %>
-
+    window.loadGraph("<%- data.siteID %>");
 </script>

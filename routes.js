@@ -52,6 +52,9 @@ router.route('/api/responses')
 router.route('/api/responses/:siteID')
     .get(api.getResponses);
 
+router.route('/api/responses/:siteID/:range')
+    .get(api.getResponses);
+
 function isAuthenticatedAPI(req, res, next) {
 
     if (req.isAuthenticated()) {

@@ -19013,6 +19013,41 @@ function fixBrokenImages() {
     }
 }
 
+window.loadGraph = function (siteID, range) {
+
+    range = typeof range === 'string' ? '/' + range : ''; //skookum!
+
+    window.queue.place(function () {
+
+        try {
+            var Http = new XMLHttpRequest();
+            var url = '/api/responses/' + siteID + range;
+            Http.open("GET", url);
+            Http.send();
+            var doneHere = false;
+
+            Http.onreadystatechange = function () {
+                if (Http.readyState === 4 && Http.status === 200 && !doneHere) {
+                    doneHere = true;
+                    try {
+                        var site = JSON.parse(Http.responseText);
+                        if (site.responses) {
+                            buildGraph(siteID, site.responses);
+                        }
+                        window.queue.next();
+                    } catch (err) {
+                        console.error(err);
+                        window.queue.next();
+                    }
+                }
+            };
+        } catch (err) {
+            console.error(err);
+            window.queue.next();
+        }
+    });
+};
+
 window.onload = function () {
     fixBrokenImages();
 };
@@ -19058,10 +19093,11 @@ function Queue() {
 
 window.queue = new Queue();
 
+window.charts = [];
+
 window.buildGraph = function (name, responses) {
-    console.log("chart-" + name);
     var ctx = document.getElementById("chart-" + name).getContext('2d');
-    var myChart = new _chart2.default(ctx, {
+    window.charts[name] = new _chart2.default(ctx, {
         type: 'line', //'bar',
         data: {
             labels: responses.map(function (r) {
