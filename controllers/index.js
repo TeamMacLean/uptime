@@ -13,7 +13,9 @@ module.exports = {
                 site.getJoin({
                     responses: {
                         _apply: function (sequence) {
-                            return sequence.orderBy(thinky.r.desc('createdAt')).limit(100)
+                            return sequence
+                                .filter(  thinky.r.row('transactionDate').during(r.time(2016, 1, 1,"Z"), r.time(2016, 6, 8,"Z")))
+                                .orderBy(thinky.r.desc('createdAt')).limit(100)
                         }
                     }
                 })
