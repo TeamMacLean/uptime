@@ -45,6 +45,9 @@ router.route('/api/sites')
     .all(isAuthenticatedAPI)
     .get(api.listSites);
 
+router.route('/api/responses/:siteID')
+    .get(api.getResponses);
+
 router.route('/api/responses')
     .all(isAuthenticatedAPI)
     .post(api.postResponse);

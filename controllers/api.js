@@ -15,6 +15,27 @@ module.exports = {
 
 
     },
+    getResponses: (req, res, next) => {
+
+        Site.get(req.params.siteID).getJoin({
+            responses: {
+                _apply: function (sequence) {
+                    return sequence
+                        .filter(function (row) {
+                            return row('createdAt').during(thinky.r.now().sub(1 * 24 * 60 * 60), thinky.r.now()) //2 days ago - now
+                        })
+                        .orderBy(thinky.r.desc('createdAt')).limit(100)
+                }
+            }
+        })
+            .run()
+            .then(site => {
+                return res.json(site);
+            })
+            .catch(err => {
+                return res.status(400).json({error: err});
+            })
+    },
     postResponse: (req, res, next) => {
 
         Site.get(req.body.siteID)

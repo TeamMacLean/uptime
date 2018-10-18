@@ -9,19 +9,19 @@ module.exports = {
         function showFull() {
             const site = Site.orderBy(thinky.r.asc('name'));
 
-            if (config.graphsOnIndex) {
-                site.getJoin({
-                    responses: {
-                        _apply: function (sequence) {
-                            return sequence
-                                .filter(function (row) {
-                                    return row('createdAt').during(thinky.r.now().sub(1 * 24 * 60 * 60), thinky.r.now()) //2 days ago - now
-                                })
-                                .orderBy(thinky.r.desc('createdAt')).limit(100)
-                        }
-                    }
-                })
-            }
+            // if (config.graphsOnIndex) {
+            //     site.getJoin({
+            //         responses: {
+            //             _apply: function (sequence) {
+            //                 return sequence
+            //                     .filter(function (row) {
+            //                         return row('createdAt').during(thinky.r.now().sub(1 * 24 * 60 * 60), thinky.r.now()) //2 days ago - now
+            //                     })
+            //                     .orderBy(thinky.r.desc('createdAt')).limit(100)
+            //             }
+            //         }
+            //     })
+            // }
             site.run()
                 .then(sites => {
                     console.log(sites.map(s => s.responses.length), 'responses');
