@@ -5,19 +5,20 @@ const thinky = require('../lib/thinky');
 
 module.exports = {
     index: (req, res, next) => {
-        function showFull() {
-            const showGraphs = config.graphsOnIndex ? {
-                _apply: function (sequence) {
-                    return sequence.orderBy(thinky.r.desc('createdAt')).limit(100)
-                }
-            } : false;
-            Site
-                .orderBy(thinky.r.asc('name'))
-                .getJoin({
-                    responses: showGraphs
 
+        function showFull() {
+            const site = Site.orderBy(thinky.r.asc('name'));
+
+            if (config.graphsOnIndex) {
+                site.getJoin({
+                    responses: {
+                        _apply: function (sequence) {
+                            return sequence.orderBy(thinky.r.desc('createdAt')).limit(100)
+                        }
+                    }
                 })
-                .run()
+            }
+            site.run()
                 .then(sites => {
                     return res.render('home', {sites});
                 })
