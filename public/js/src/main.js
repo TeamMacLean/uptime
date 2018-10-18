@@ -100,66 +100,75 @@ window.queue = new Queue();
 window.charts = [];
 
 window.buildGraph = function (name, responses) {
-    var ctx = document.getElementById("chart-" + name).getContext('2d');
-    window.charts[name] = new Chart(ctx, {
-        type: 'line',//'bar',
-        data: {
-            labels: responses.map(function (r) {
-                return moment(r.createdAt).calendar();
+
+    const processedData = {
+        labels: responses.map(function (r) {
+            return moment(r.createdAt).calendar();
+        }),
+        datasets: [{
+            label: 'ms',
+            data: responses.map(function (r) {
+                return r.responseTime.toFixed(2);
             }),
-            datasets: [{
-                label: 'ms',
-                data: responses.map(function (r) {
-                    return r.responseTime.toFixed(2);
-                }),
-                fill: false,//'start',
-                backgroundColor: responses.map(function (r) {
-                    return r.up ? '#64EDC6' : '#ff7675';
-                }),
-                // // backgroundColor: [
-                // //     '#64EDC6'
-                // // ],
-                // borderColor: responses.map(function (r) {
-                //     return r.up ? '#64EDC6' : '#ff7675';
-                // }),
-                borderColor: [
-                    '#a29bfe'//'#64EDC6'
-                ],
-                // borderWidth: 1
-            }]
-        },
-        options: {
-            // animation: false,
-            legend: {
-                display: false
-            },
-            elements: {point: {radius: 0, hitRadius: 30, hoverRadius: 0}},
-            scales: {
-                yAxes: [{
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    ticks: {
-                        // display: false,
-                        suggestedMin: 0,
-                        min: 0,
-                        beginAtZero: true
-                    }
-                }],
-                xAxes: [{
-                    gridLines: {
-                        display: false,
-                        drawBorder: false
-                    },
-                    ticks: {
-                        display: false //this will remove only the label
-                    }
-                }]
-            },
-            tooltip: {
-                mode: 'label'
+            fill: false,//'start',
+            backgroundColor: responses.map(function (r) {
+                return r.up ? '#64EDC6' : '#ff7675';
+            }),
+            // // backgroundColor: [
+            // //     '#64EDC6'
+            // // ],
+            // borderColor: responses.map(function (r) {
+            //     return r.up ? '#64EDC6' : '#ff7675';
+            // }),
+            borderColor: [
+                '#a29bfe'//'#64EDC6'
+            ],
+            // borderWidth: 1
+        }]
+    };
+
+    if (window.charts[name]) {
+        window.charts[name].data = processedData;
+        window.charts[name].update();
+    } else {
+
+        var ctx = document.getElementById("chart-" + name).getContext('2d');
+        window.charts[name] = new Chart(ctx, {
+            type: 'line',//'bar',
+            data: processedData,
+            options: {
+                // animation: false,
+                legend: {
+                    display: false
+                },
+                elements: {point: {radius: 0, hitRadius: 30, hoverRadius: 0}},
+                scales: {
+                    yAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            // display: false,
+                            suggestedMin: 0,
+                            min: 0,
+                            beginAtZero: true
+                        }
+                    }],
+                    xAxes: [{
+                        gridLines: {
+                            display: false,
+                            drawBorder: false
+                        },
+                        ticks: {
+                            display: false //this will remove only the label
+                        }
+                    }]
+                },
+                tooltip: {
+                    mode: 'label'
+                }
             }
-        }
-    });
+        });
+    }
 }
