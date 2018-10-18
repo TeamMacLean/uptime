@@ -64,12 +64,18 @@
 <script>
 
     <% if(data.siteID){ %>
-    const Http = new XMLHttpRequest();
-    const url = '/api/responses/<%- data.siteID %>';
-    Http.open("GET", url);
-    Http.send();
-    Http.onreadystatechange = (e) => {
-        console.log(Http.responseText)
+    try {
+
+
+        const Http = new XMLHttpRequest();
+        const url = '/api/responses/<%- data.siteID %>';
+        Http.open("GET", url);
+        Http.send();
+        Http.onreadystatechange = (e) => {
+            console.log(Http.responseText)
+        }
+    } catch (err) {
+        console.error(err);
     }
     <% } %>
 
