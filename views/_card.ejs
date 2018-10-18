@@ -57,6 +57,7 @@
         </div>
         <div class="graph">
             <canvas id="chart-<%- data.siteID %>" width="100%" height="20px"></canvas>
+            <span class="link" onclick="window.loadGraph('<%- data.siteID %>','hour')">Hour</span>
             <span class="link" onclick="window.loadGraph('<%- data.siteID %>','day')">Day</span>
             <span class="link" onclick="window.loadGraph('<%- data.siteID %>','week')">Week</span>
             <span class="link" onclick="window.loadGraph('<%- data.siteID %>','month')">Month</span>
