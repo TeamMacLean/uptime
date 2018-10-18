@@ -10,13 +10,14 @@ module.exports = {
             const site = Site.orderBy(thinky.r.asc('name'));
 
             if (config.graphsOnIndex) {
+                console.log(thinky.r.time(2016, 1, 1, "Z"));
                 site.getJoin({
                     responses: {
                         _apply: function (sequence) {
                             return sequence
-                                .filter(function (row) {
-                                    return row.during(thinky.r.time(2016, 1, 1, "Z"), thinky.r.time(2016, 6, 8, "Z"))
-                                })
+                            // .filter(function (row) {
+                            //     return row.during(thinky.r.time(2016, 1, 1, "Z"), thinky.r.time(2016, 6, 8, "Z"))
+                            // })
                                 .orderBy(thinky.r.desc('createdAt')).limit(100)
                         }
                     }
