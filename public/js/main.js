@@ -19100,7 +19100,7 @@ window.buildGraph = function (name, responses) {
     //TODO limit data, get even split
     //e.g 1000 point, limit to 100 = get every 10th
 
-    var oldArr = responses;
+    var oldArr = responses.reverse();
     var filteredArray = [];
 
     var maxVal = 100;
