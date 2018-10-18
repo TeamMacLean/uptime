@@ -19097,17 +19097,36 @@ window.charts = [];
 
 window.buildGraph = function (name, responses) {
 
+    //TODO limit data, get even split
+    //e.g 1000 point, limit to 100 = get every 10th
+
+    var oldArr = responses;
+    var filteredArray = [];
+
+    var maxVal = 100;
+
+    var delta = Math.floor(oldArr.length / maxVal);
+
+    // avoid filter because you don't want
+    // to loop over 10000 elements !
+    // just access them directly with a for loop !
+    //                                 |
+    //                                 V
+    for (var i = 0; i < oldArr.length; i = i + delta) {
+        filteredArray.push(oldArr[i]);
+    }
+
     var processedData = {
-        labels: responses.map(function (r) {
+        labels: filteredArray.map(function (r) {
             return (0, _moment2.default)(r.createdAt).calendar();
         }),
         datasets: [{
             label: 'ms',
-            data: responses.map(function (r) {
+            data: filteredArray.map(function (r) {
                 return r.responseTime.toFixed(2);
             }),
             fill: false, //'start',
-            backgroundColor: responses.map(function (r) {
+            backgroundColor: filteredArray.map(function (r) {
                 return r.up ? '#64EDC6' : '#ff7675';
             }),
             // // backgroundColor: [
