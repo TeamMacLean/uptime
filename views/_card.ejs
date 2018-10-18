@@ -64,24 +64,39 @@
 <script>
 
     <% if(data.siteID){ %>
-    try {
-        const Http = new XMLHttpRequest();
-        const url = '/api/responses/<%- data.siteID %>';
-        Http.open("GET", url);
-        Http.send();
-        Http.onreadystatechange = (e) => {
-            try {
-                const site = JSON.parse(Http.responseText);
-                if (site.responses) {
-                    buildGraph(site.id, site.responses);
+
+    window.queue.place(function () {
+
+        try {
+            var Http = new XMLHttpRequest();
+            var url = '/api/responses/<%- data.siteID %>';
+            console.log('getting response', url);
+            Http.open("GET", url);
+            Http.send();
+            var doneHere = false;
+
+            Http.onreadystatechange = (e) => {
+                if (Http.readyState === 4 && !doneHere) {
+                    doneHere = true;
+                    try {
+                        var site = JSON.parse(Http.responseText);
+                        if (site.responses) {
+                            buildGraph(site.id, site.responses);
+                        }
+                        window.queue.next();
+                    } catch (err) {
+                        console.error(err);
+                        window.queue.next();
+                    }
                 }
-            } catch (err) {
-                console.error('error with', url, err)
             }
+        } catch (err) {
+            console.error(err);
+            window.queue.next();
         }
-    } catch (err) {
-        console.error(err);
-    }
+    });
+
+
 
 
 
