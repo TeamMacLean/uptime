@@ -191,4 +191,4 @@ window.buildGraph = function (name, responses) {
             }
         });
     }
-}
+};
