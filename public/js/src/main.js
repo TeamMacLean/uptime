@@ -35,9 +35,7 @@ window.loadGraph = function (siteID, range) {
                     try {
                         const site = JSON.parse(Http.responseText);
                         if (site.responses) {
-                            console.log('pre build', site.responses);
                             buildGraph(siteID, site.responses);
-                            console.log('post build', site.responses);
                         }
                         window.queue.next();
                     } catch (err) {
@@ -106,12 +104,14 @@ window.buildGraph = function (name, responses) {
     //TODO limit data, get even split
     //e.g 1000 point, limit to 100 = get every 10th
 
+    console.log('1');
     const oldArr = responses.reverse();
     const filteredArray = [];
 
     const maxVal = 100;
 
     const delta = Math.floor(oldArr.length / maxVal);
+    console.log('2');
 
 // avoid filter because you don't want
 // to loop over 10000 elements !
@@ -121,6 +121,8 @@ window.buildGraph = function (name, responses) {
     for (let i = 0; i < oldArr.length; i = i + delta) {
         filteredArray.push(oldArr[i]);
     }
+
+    console.log('3');
 
 
     const processedData = {
@@ -149,11 +151,13 @@ window.buildGraph = function (name, responses) {
         }]
     };
 
+    console.log('4');
     if (window.charts[name]) {
+        console.log('5');
         window.charts[name].data = processedData;
         window.charts[name].update();
     } else {
-
+        console.log('6');
         var ctx = document.getElementById("chart-" + name).getContext('2d');
         window.charts[name] = new Chart(ctx, {
             type: 'line',//'bar',
