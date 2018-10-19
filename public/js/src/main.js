@@ -134,7 +134,7 @@ window.buildGraph = function (name, responses) {
                 return r.responseTime.toFixed(2);
             }),
             fill: false,//'start',
-            backgroundColor: filteredArray.map(function (r) {
+            backgroundColor: responses.map(function (r) {
                 return r.up ? '#64EDC6' : '#ff7675';
             }),
             // // backgroundColor: [
