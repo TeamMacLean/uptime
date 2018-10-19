@@ -68,7 +68,6 @@ module.exports = {
             .run()
             .then(site => {
 
-
                 const oldArr = site.responses.reverse();
                 let filteredArray = [];
 
@@ -76,26 +75,16 @@ module.exports = {
 
                 const delta = Math.floor(oldArr.length / maxVal);
 
-                // avoid filter because you don't want
-                // to loop over 10000 elements !
-                // just access them directly with a for loop !
-                //                                 |
-                //                                 V
+
                 if (oldArr.length < maxVal) {
                     filteredArray = oldArr;
                 } else {
-                    // avoid filter because you don't want
-                    // to loop over 10000 elements !
-                    // just access them directly with a for loop !
-                    //                                 |
-                    //
                     for (let i = 0; i < oldArr.length; i = i + delta) {
                         filteredArray.push(oldArr[i]);
                     }
                 }
 
                 site.responses = filteredArray;
-
 
                 return res.json(site);
             })

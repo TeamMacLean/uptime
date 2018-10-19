@@ -4,6 +4,10 @@ import Chart from 'chart.js';
 window.Chart = Chart;
 window.moment = moment;
 
+window.charts = [];
+window.dataSets = [];
+
+
 function fixBrokenImages() {
     const img = document.getElementsByTagName('img');
     let i = 0, l = img.length;
@@ -20,35 +24,46 @@ window.loadGraph = function (siteID, range) {
 
     range = typeof range === 'string' ? '/' + range : ''; //skookum!
 
-    window.queue.place(function () {
+    if (window.dataSets[siteID] && window.dataSets[siteID][range]) {
+        buildGraph(siteID, window.dataSets[siteID][range]);
+    } else {
+        window.queue.place(function () {
 
-        try {
-            const Http = new XMLHttpRequest();
-            const url = '/api/responses/' + siteID + range;
-            Http.open("GET", url);
-            Http.send();
-            let doneHere = false;
+            try {
+                const Http = new XMLHttpRequest();
+                const url = '/api/responses/' + siteID + range;
+                Http.open("GET", url);
+                Http.send();
+                let doneHere = false;
 
-            Http.onreadystatechange = () => {
-                if (Http.readyState === 4 && Http.status === 200 && !doneHere) {
-                    doneHere = true;
-                    try {
-                        const site = JSON.parse(Http.responseText);
-                        if (site.responses) {
-                            buildGraph(siteID, site.responses);
+                Http.onreadystatechange = () => {
+                    if (Http.readyState === 4 && Http.status === 200 && !doneHere) {
+                        doneHere = true;
+                        try {
+                            const site = JSON.parse(Http.responseText);
+                            if (site.responses) {
+
+                                //cache results
+                                if (!window.dataSets[siteID]) {
+                                    window.dataSets[siteID] = [];
+                                }
+                                window.dataSets[siteID][range] = site.responses;
+
+                                buildGraph(siteID, site.responses);
+                            }
+                            window.queue.next();
+                        } catch (err) {
+                            console.error(err);
+                            window.queue.next();
                         }
-                        window.queue.next();
-                    } catch (err) {
-                        console.error(err);
-                        window.queue.next();
                     }
                 }
+            } catch (err) {
+                console.error(err);
+                window.queue.next();
             }
-        } catch (err) {
-            console.error(err);
-            window.queue.next();
-        }
-    });
+        });
+    }
 
 };
 
@@ -97,32 +112,8 @@ function Queue() {
 
 window.queue = new Queue();
 
-window.charts = [];
 
 window.buildGraph = function (name, responses) {
-
-    //TODO limit data, get even split
-    //e.g 1000 point, limit to 100 = get every 10th
-
-//     const oldArr = responses.reverse();
-//     let filteredArray = [];
-//
-//     const maxVal = 100;
-//
-//     const delta = Math.floor(oldArr.length / maxVal);
-//
-// // avoid filter because you don't want
-// // to loop over 10000 elements !
-// // just access them directly with a for loop !
-// //                                 |
-// //                                 V
-//     if(oldArr.length < maxVal){
-//         filteredArray = oldArr;
-//     } else {
-//         for (let i = 0; i < oldArr.length; i = i + delta) {
-//             filteredArray.push(oldArr[i]);
-//         }
-//     }
 
     const processedData = {
         labels: responses.map(function (r) {
