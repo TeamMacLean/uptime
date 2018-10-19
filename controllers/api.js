@@ -51,7 +51,6 @@ module.exports = {
 
 
         }
-
         Site.get(req.params.siteID)
             .getJoin({
                 responses: {
