@@ -118,6 +118,9 @@ window.buildGraph = function (name, responses) {
 // just access them directly with a for loop !
 //                                 |
 //                                 V
+    console.log('delta',delta);
+    console.log('maxVal',maxVal);
+    console.log('oldArr',oldArr);
     for (let i = 0; i < oldArr.length; i = i + delta) {
         filteredArray.push(oldArr[i]);
     }
