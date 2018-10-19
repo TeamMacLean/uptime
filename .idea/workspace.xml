@@ -58,7 +58,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="ejs" value="6718" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="13073" />
+          <entry key="js" value="13126" />
           <entry key="json" value="36" />
           <entry key="less" value="2618" />
           <entry key="www" value="40" />
@@ -69,7 +69,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="EJS" value="6718" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="13113" />
+          <entry key="JavaScript" value="13166" />
           <entry key="Less" value="2618" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -108,8 +108,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="365">
-              <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
+            <state relative-caret-position="620">
+              <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
             </state>
           </provider>
         </entry>
@@ -136,7 +136,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>right</find>
       <find>.container</find>
       <find>column</find>
       <find>row</find>
@@ -166,6 +165,7 @@
       <find>site.</find>
       <find>buildGraph</find>
       <find>console.log</find>
+      <find>console.</find>
     </findStrings>
     <replaceStrings>
       <replace>primary</replace>
@@ -691,8 +691,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="365">
-          <caret line="122" column="31" selection-start-line="122" selection-start-column="31" selection-end-line="122" selection-end-column="31" />
+        <state relative-caret-position="620">
+          <caret line="62" column="21" lean-forward="true" selection-start-line="62" selection-start-column="21" selection-end-line="62" selection-end-column="21" />
         </state>
       </provider>
     </entry>

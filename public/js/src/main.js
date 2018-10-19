@@ -104,29 +104,25 @@ window.buildGraph = function (name, responses) {
     //TODO limit data, get even split
     //e.g 1000 point, limit to 100 = get every 10th
 
-    console.log('1');
     const oldArr = responses.reverse();
-    const filteredArray = [];
+    let filteredArray = [];
 
     const maxVal = 100;
 
     const delta = Math.floor(oldArr.length / maxVal);
-    console.log('2');
 
 // avoid filter because you don't want
 // to loop over 10000 elements !
 // just access them directly with a for loop !
 //                                 |
 //                                 V
-    console.log('delta',delta);
-    console.log('maxVal',maxVal);
-    console.log('oldArr',oldArr);
-    for (let i = 0; i < oldArr.length; i = i + delta) {
-        filteredArray.push(oldArr[i]);
+    if(oldArr.length < maxVal){
+        filteredArray = oldArr;
+    } else {
+        for (let i = 0; i < oldArr.length; i = i + delta) {
+            filteredArray.push(oldArr[i]);
+        }
     }
-
-    console.log('3');
-
 
     const processedData = {
         labels: filteredArray.map(function (r) {
@@ -154,13 +150,10 @@ window.buildGraph = function (name, responses) {
         }]
     };
 
-    console.log('4');
     if (window.charts[name]) {
-        console.log('5');
         window.charts[name].data = processedData;
         window.charts[name].update();
     } else {
-        console.log('6');
         var ctx = document.getElementById("chart-" + name).getContext('2d');
         window.charts[name] = new Chart(ctx, {
             type: 'line',//'bar',
