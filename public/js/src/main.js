@@ -23,19 +23,21 @@ window.loadGraph = function (siteID, range) {
     window.queue.place(function () {
 
         try {
-            var Http = new XMLHttpRequest();
-            var url = '/api/responses/' + siteID + range;
+            const Http = new XMLHttpRequest();
+            const url = '/api/responses/' + siteID + range;
             Http.open("GET", url);
             Http.send();
-            var doneHere = false;
+            let doneHere = false;
 
             Http.onreadystatechange = () => {
                 if (Http.readyState === 4 && Http.status === 200 && !doneHere) {
                     doneHere = true;
                     try {
-                        var site = JSON.parse(Http.responseText);
+                        const site = JSON.parse(Http.responseText);
                         if (site.responses) {
+                            console.log('pre build', site.responses);
                             buildGraph(siteID, site.responses);
+                            console.log('post build', site.responses);
                         }
                         window.queue.next();
                     } catch (err) {
