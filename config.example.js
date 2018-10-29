@@ -11,6 +11,7 @@ module.exports = {
         webhookURL: 'N/A'
     },
     airdale: {
-        apiKey: null
+        enabled:false,
+        apiKey: ''
     }
 };
