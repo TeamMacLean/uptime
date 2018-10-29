@@ -3,10 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="f5fe0f45-95ad-4325-aeff-42f64cd8e54c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/controllers/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/controllers/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/main.map" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/main.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/_card.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/_card.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.example.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.example.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/notifications.js" beforeDir="false" afterPath="$PROJECT_DIR$/lib/notifications.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,15 +17,15 @@
     <session id="-1481387002">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="10" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="12" />
+          <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.16" value="2" />
-          <entry key="project.open.time.2" value="2" />
+          <entry key="project.open.time.2" value="3" />
           <entry key="project.open.time.27" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="12" />
+          <entry key="project.opened" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -37,7 +35,7 @@
           <entry key="ejs" value="73" />
           <entry key="gitignore" value="2" />
           <entry key="ico" value="1" />
-          <entry key="js" value="115" />
+          <entry key="js" value="119" />
           <entry key="json" value="7" />
           <entry key="less" value="52" />
           <entry key="map" value="1" />
@@ -51,7 +49,7 @@
           <entry key="EJS" value="73" />
           <entry key="Image" value="1" />
           <entry key="JSON" value="7" />
-          <entry key="JavaScript" value="118" />
+          <entry key="JavaScript" value="122" />
           <entry key="Less" value="52" />
           <entry key="PLAIN_TEXT" value="2" />
           <entry key="SourceMap" value="1" />
@@ -62,7 +60,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="ejs" value="6761" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="13663" />
+          <entry key="js" value="13954" />
           <entry key="json" value="36" />
           <entry key="less" value="2618" />
           <entry key="www" value="40" />
@@ -73,7 +71,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="EJS" value="6761" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="13703" />
+          <entry key="JavaScript" value="13994" />
           <entry key="Less" value="2618" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -83,55 +81,28 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/home.ejs">
+        <entry file="file://$PROJECT_DIR$/config.example.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="35" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/sites/show.ejs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="23" selection-start-line="13" selection-start-column="23" selection-end-line="13" selection-end-column="23" />
+            <state relative-caret-position="180">
+              <caret line="12" column="11" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="11" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/views/_card.ejs">
+        <entry file="file://$PROJECT_DIR$/lib/notifications.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="885">
-              <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+            <state relative-caret-position="675">
+              <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
+        <entry file="file://$PROJECT_DIR$/config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-8">
-              <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/controllers/api.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="149">
-              <caret line="53" selection-start-line="53" selection-end-line="53" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="810">
-              <caret line="54" column="43" selection-start-line="54" selection-start-column="43" selection-end-line="54" selection-end-column="43" />
+            <state relative-caret-position="210">
+              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -216,15 +187,12 @@
         <option value="$PROJECT_DIR$/models/site.js" />
         <option value="$PROJECT_DIR$/views/sites/new.ejs" />
         <option value="$PROJECT_DIR$/views/sites/edit.ejs" />
-        <option value="$PROJECT_DIR$/lib/notifications.js" />
         <option value="$PROJECT_DIR$/public/style/style.less" />
         <option value="$PROJECT_DIR$/public/style/cards.less" />
         <option value="$PROJECT_DIR$/lib/apdex.js" />
         <option value="$PROJECT_DIR$/views/foot.ejs" />
         <option value="$PROJECT_DIR$/models/response.js" />
         <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/config.example.js" />
-        <option value="$PROJECT_DIR$/config.js" />
         <option value="$PROJECT_DIR$/controllers/index.js" />
         <option value="$PROJECT_DIR$/views/home.ejs" />
         <option value="$PROJECT_DIR$/controllers/sites.js" />
@@ -234,6 +202,9 @@
         <option value="$PROJECT_DIR$/controllers/api.js" />
         <option value="$PROJECT_DIR$/public/js/src/main.js" />
         <option value="$PROJECT_DIR$/views/_card.ejs" />
+        <option value="$PROJECT_DIR$/config.example.js" />
+        <option value="$PROJECT_DIR$/config.js" />
+        <option value="$PROJECT_DIR$/lib/notifications.js" />
       </list>
     </option>
   </component>
@@ -265,7 +236,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -277,6 +248,11 @@
               <item name="uptime" type="b2602c69:ProjectViewProjectNode" />
               <item name="uptime" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="uptime" type="b2602c69:ProjectViewProjectNode" />
+              <item name="uptime" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="uptime" type="b2602c69:ProjectViewProjectNode" />
@@ -305,7 +281,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -366,20 +342,20 @@
     <frame x="1280" y="23" width="1280" height="1417" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30129242" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.31098545" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30261138" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3015351" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32949308" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.14976959" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.1491228" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Docker" order="10" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -465,8 +441,8 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/main.map">
-      <provider editor-type-id="sourcemapFileViewerProvider" />
       <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="sourcemapFileViewerProvider" />
     </entry>
     <entry file="file://$PROJECT_DIR$/views/auth/signin.ejs">
       <provider selected="true" editor-type-id="text-editor">
@@ -584,13 +560,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/notifications.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="12" selection-start-line="18" selection-start-column="8" selection-end-line="18" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/foot.ejs">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -636,20 +605,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config.example.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/controllers/sites.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="157">
@@ -672,6 +627,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="19" column="5" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/controllers/api.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="795">
+          <caret line="53" selection-start-line="53" selection-end-line="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/routes.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
@@ -679,24 +648,31 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/controllers/api.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="149">
-          <caret line="53" selection-start-line="53" selection-end-line="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/_card.ejs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="885">
-          <caret line="59" column="16" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+        <state relative-caret-position="270">
+          <caret line="18" column="37" selection-start-line="18" selection-start-column="37" selection-end-line="18" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.example.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="11" selection-start-line="12" selection-start-column="4" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/notifications.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="675">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
         </state>
       </provider>
     </entry>

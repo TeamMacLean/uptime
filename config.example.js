@@ -3,11 +3,14 @@ module.exports = {
     db: 'uptime',
     secret: 'Change Me',
     showSitesToUnauth: true,
-    graphsOnIndex:true,
+    graphsOnIndex: true,
     allowRegistration: false,
     apdexT: 0.2,
-    slack:{
-        enabled:false,
+    slack: {
+        enabled: false,
         webhookURL: 'N/A'
+    },
+    airdale: {
+        apiKey: null
     }
 };
