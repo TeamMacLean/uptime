@@ -6,6 +6,7 @@ module.exports = {
     graphsOnIndex: true,
     allowRegistration: false,
     apdexT: 0.2,
+    selfCheck: true,
     slack: {
         enabled: false,
         webhookURL: 'N/A'
