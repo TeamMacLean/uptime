@@ -18,6 +18,8 @@ const Response = thinky.createModel('Response', {
 
 module.exports = Response;
 
+
+
 Response.pre('save', function (next) {
     if (!this.up) {
         this.responseTime = 0;
@@ -25,6 +27,7 @@ Response.pre('save', function (next) {
     if (!this.date) {
         this.date = this.createdAt;
     }
+
     next();
 });
 

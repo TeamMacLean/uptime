@@ -43,9 +43,17 @@ Site.pre('save', function (next) {
 
 });
 
+Site.defineStatic('cleanup', function () {
+    const month = 60 * 60 * 24 * 32; //32 days
+    return Response.filter(function (row) {
+        return row('createdAt').gt(thinky.r.now().sub(month))
+    }).delete();
+});
+
 Site.define('updateStats', function () {
-    console.log('updating stats');
     const site = this;
+
+    Site.cleanup();
 
     function averageResponse(responses) {
         const averages = 3;
