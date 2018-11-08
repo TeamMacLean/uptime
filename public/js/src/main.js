@@ -1,5 +1,6 @@
 import moment from 'moment'
 import Chart from 'chart.js';
+import config from '../../../config';
 
 window.Chart = Chart;
 window.moment = moment;
@@ -115,6 +116,19 @@ window.queue = new Queue();
 
 window.buildGraph = function (name, responses) {
 
+    function getApdexColor(response) {
+        const T = config.apdexT;
+
+        const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
+        if (timeInSeconds <= T) {
+            return '#55efc4';
+        } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
+            return '#ffeaa7'
+        } else {
+            return '#ff7675';
+        }
+    }
+
     const processedData = {
         labels: responses.map(function (r) {
             return moment(r.createdAt).calendar();
@@ -126,7 +140,7 @@ window.buildGraph = function (name, responses) {
             }),
             fill: false,//'start',
             backgroundColor: responses.map(function (r) {
-                return r.up ? '#64EDC6' : '#ff7675';
+                return getApdexColor(r);
             }),
             // // backgroundColor: [
             // //     '#64EDC6'
