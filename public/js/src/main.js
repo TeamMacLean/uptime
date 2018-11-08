@@ -129,7 +129,7 @@ window.buildGraph = function (name, responses) {
         }
     }
 
-    const data = responses.reduce((all, r) => {
+    const quickData = responses.reduce((all, r) => {
 
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
@@ -137,18 +137,12 @@ window.buildGraph = function (name, responses) {
         return all;
     }, {labels: [], datasets: [], colors: []});
     const processedData = {
-        labels: responses.map(function (r) {
-            return moment(r.createdAt).calendar();
-        }),
+        labels: quickData.labels,
         datasets: [{
             label: 'ms',
-            data: responses.map(function (r) {
-                return r.responseTime.toFixed(2);
-            }),
+            data: quickData.datasets,
             fill: false,//'start',
-            backgroundColor: responses.map(function (r) {
-                return getApdexColor(r);
-            }),
+            backgroundColor: quickData.colors,
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
@@ -158,9 +152,7 @@ window.buildGraph = function (name, responses) {
             // borderColor: [
             //     '#a29bfe'//'#64EDC6'
             // ],
-            borderColor: responses.map(function (r) {
-                return getApdexColor(r);
-            }),
+            borderColor: '#55efc4'//quickData.colors,
             // borderWidth: 1
         }]
     };
