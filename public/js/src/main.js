@@ -149,10 +149,10 @@ window.buildGraph = function (name, responses) {
             //     return r.responseTime.toFixed(2);
             // }),
             fill: false,//'start',
-            // backgroundColor: responses.map(function (r) {
-            //     return getApdexColor(r);
-            // }),
-            backgroundColor:data.colors,
+            backgroundColor: responses.map(function (r) {
+                return getApdexColor(r);
+            }),
+            // backgroundColor:data.colors,
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
