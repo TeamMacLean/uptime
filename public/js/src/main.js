@@ -159,7 +159,7 @@ window.buildGraph = function (name, responses) {
             // borderColor: responses.map(function (r) {
             //     return r.up ? '#64EDC6' : '#ff7675';
             // }),
-            // borderColor:data.colors,
+            borderColor:data.colors,
             // borderColor: responses.map(function (r) {
             //     return getApdexColor(r);
             // }),
