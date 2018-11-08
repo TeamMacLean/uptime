@@ -162,10 +162,10 @@ window.buildGraph = function (name, responses) {
             // borderColor: [
             //     '#a29bfe'//'#64EDC6'
             // ],
-            borderColor:data.colors,
-            // borderColor: responses.map(function (r) {
-            //     return getApdexColor(r);
-            // }),
+            // borderColor:data.colors,
+            borderColor: responses.map(function (r) {
+                return getApdexColor(r);
+            }),
             // borderWidth: 1
         }]
     };
