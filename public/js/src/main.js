@@ -129,28 +129,42 @@ window.buildGraph = function (name, responses) {
         }
     }
 
+    const data = responses.reduce((all, r) => {
+        all.labels.push(moment(r.createdAt).calendar());
+        all.datasets.push(r.responseTime.toFixed(2));
+        all.colors.push(getApdexColor(r));
+        return all;
+    }, {labels: [], datasets: [], colors: []});
+
     const processedData = {
-        labels: responses.map(function (r) {
-            return moment(r.createdAt).calendar();
-        }),
+        labels: data.labels,
+        // labels: responses.map(function (r) {
+        //     return moment(r.createdAt).calendar();
+        // }),
         datasets: [{
             label: 'ms',
-            data: responses.map(function (r) {
-                return r.responseTime.toFixed(2);
-            }),
+            data: data.datasets,
+            // data: responses.map(function (r) {
+            //     return r.responseTime.toFixed(2);
+            // }),
             fill: false,//'start',
-            backgroundColor: responses.map(function (r) {
-                return getApdexColor(r);
-            }),
+            // backgroundColor: responses.map(function (r) {
+            //     return getApdexColor(r);
+            // }),
+            backgroundColor: data.colors,
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
             // borderColor: responses.map(function (r) {
             //     return r.up ? '#64EDC6' : '#ff7675';
             // }),
-            borderColor: [
-                '#a29bfe'//'#64EDC6'
-            ],
+            // borderColor: [
+            //     '#a29bfe'//'#64EDC6'
+            // ],
+            borderColor: data.colors,
+            // borderColor: responses.map(function (r) {
+            //     return getApdexColor(r);
+            // }),
             // borderWidth: 1
         }]
     };
