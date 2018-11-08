@@ -45,16 +45,21 @@ Site.pre('save', function (next) {
 
 Site.defineStatic('cleanup', function () {
     const month = 60 * 60 * 24 * 32; //32 days
-    console.log('cleaning up old responses');
-    return Response.filter(function (row) {
+    // console.log('cleaning up old responses');
+    Response.filter(function (row) {
         return row('createdAt').lt(thinky.r.now().sub(month))
-    }).delete();
+    }).then(toDelete => {
+        toDelete.map(td => {
+            return td.delete();
+        })
+    })
 });
 
 Site.define('updateStats', function () {
     const site = this;
 
-    Site.cleanup();
+    Site.cleanup()
+        .then()
 
     function averageResponse(responses) {
         const averages = 3;

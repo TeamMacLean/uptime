@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f5fe0f45-95ad-4325-aeff-42f64cd8e54c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/site.js" beforeDir="false" afterPath="$PROJECT_DIR$/models/site.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -60,7 +59,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="ejs" value="6761" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="14460" />
+          <entry key="js" value="14565" />
           <entry key="json" value="36" />
           <entry key="less" value="2618" />
           <entry key="www" value="40" />
@@ -71,7 +70,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="EJS" value="6761" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="14500" />
+          <entry key="JavaScript" value="14605" />
           <entry key="Less" value="2618" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -101,8 +100,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/site.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="49" column="61" selection-start-line="49" selection-start-column="61" selection-end-line="49" selection-end-column="61" />
+            <state relative-caret-position="557">
+              <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -698,8 +697,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/site.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="542">
-          <caret line="49" column="61" selection-start-line="49" selection-start-column="61" selection-end-line="49" selection-end-column="61" />
+        <state relative-caret-position="557">
+          <caret line="50" column="6" selection-start-line="50" selection-start-column="6" selection-end-line="50" selection-end-column="6" />
         </state>
       </provider>
     </entry>
