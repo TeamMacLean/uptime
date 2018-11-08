@@ -152,7 +152,7 @@ window.buildGraph = function (name, responses) {
             // borderColor: [
             //     '#a29bfe'//'#64EDC6'
             // ],
-            borderColor: '#55efc4'//quickData.colors,
+            borderColor: '#7993F9'//quickData.colors,
             // borderWidth: 1
         }]
     };
