@@ -48,18 +48,19 @@ Site.defineStatic('cleanup', function () {
     // console.log('cleaning up old responses');
     Response.filter(function (row) {
         return row('createdAt').lt(thinky.r.now().sub(month))
-    }).then(toDelete => {
-        toDelete.map(td => {
-            return td.delete();
-        })
     })
+        .run()
+        .then(toDelete => {
+            toDelete.map(td => {
+                return td.delete();
+            })
+        })
 });
 
 Site.define('updateStats', function () {
     const site = this;
 
-    Site.cleanup()
-        .then()
+    Site.cleanup(); //start and ignore
 
     function averageResponse(responses) {
         const averages = 3;
