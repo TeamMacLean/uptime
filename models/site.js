@@ -45,6 +45,7 @@ Site.pre('save', function (next) {
 
 Site.defineStatic('cleanup', function () {
     const month = 60 * 60 * 24 * 32; //32 days
+    console.log('cleaning up old responses');
     return Response.filter(function (row) {
         return row('createdAt').lt(thinky.r.now().sub(month))
     }).delete();
