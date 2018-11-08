@@ -152,16 +152,13 @@ window.buildGraph = function (name, responses) {
             // backgroundColor: responses.map(function (r) {
             //     return getApdexColor(r);
             // }),
-            backgroundColor:data.colors,
+            // backgroundColor:data.colors,
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
-            borderColor: responses.map(function (r) {
-                return r.up ? '#64EDC6' : '#ff7675';
-            }),
-            // borderColor: [
-            //     '#a29bfe'//'#64EDC6'
-            // ],
+            // borderColor: responses.map(function (r) {
+            //     return r.up ? '#64EDC6' : '#ff7675';
+            // }),
             // borderColor:data.colors,
             // borderColor: responses.map(function (r) {
             //     return getApdexColor(r);
