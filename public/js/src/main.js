@@ -117,18 +117,18 @@ window.queue = new Queue();
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
-    function getApdexColor(response) {
-        const T = config.apdexT;
-
-        const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
-        if (timeInSeconds <= T) {
-            return '#55efc4';
-        } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
-            return '#ffeaa7'
-        } else {
-            return '#ff7675';
-        }
-    }
+    // function getApdexColor(response) {
+    //     const T = config.apdexT;
+    //
+    //     const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
+    //     if (timeInSeconds <= T) {
+    //         return '#55efc4';
+    //     } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
+    //         return '#ffeaa7'
+    //     } else {
+    //         return '#ff7675';
+    //     }
+    // }
 
     const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
 
@@ -139,10 +139,10 @@ window.buildGraph = function (name, responses) {
         all.datasets.push(r.responseTime.toFixed(2));
         // all.colors.push(getApdexColor(r));
 
-        gradientStroke.addColorStop(seg * idx, getApdexColor(r));
+        // gradientStroke.addColorStop(seg * idx, getApdexColor(r));
 
         return all;
-    }, {labels: [], datasets: [], colors: [], gradientStroke});
+    }, {labels: [], datasets: [], colors: []});
 
     const processedData = {
         labels: quickData.labels,
@@ -150,19 +150,12 @@ window.buildGraph = function (name, responses) {
             label: 'ms',
             data: quickData.datasets,
             // fill: false,//'start',
-            backgroundColor: quickData.gradientStroke,
+            // backgroundColor: quickData.gradientStroke,
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
-            // borderColor: '#7993F9'//quickData.colors,
-
-
-            borderColor: quickData.gradientStroke,
-            // pointBorderColor: quickData.gradientStroke,
-            // pointBackgroundColor: quickData.gradientStroke,
-            // pointHoverBackgroundColor: quickData.gradientStroke,
-            // pointHoverBorderColor: quickData.gradientStroke,
-
+            borderColor: '#7993F9'//quickData.colors,
+            // borderColor: quickData.gradientStroke,
             // borderWidth: 1
         }]
     };
