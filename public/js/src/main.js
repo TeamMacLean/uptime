@@ -130,7 +130,7 @@ window.buildGraph = function (name, responses) {
         }
     }
 
-    const gradientStroke = ctx.createLinearGradient(0, 0, 0, 400);
+    const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
 
     const seg = 1 / responses.length;
 
@@ -150,7 +150,7 @@ window.buildGraph = function (name, responses) {
             label: 'ms',
             data: quickData.datasets,
             // fill: false,//'start',
-            // backgroundColor: quickData.colors,
+            backgroundColor: quickData.gradientStroke,
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
