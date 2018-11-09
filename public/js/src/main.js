@@ -130,17 +130,9 @@ window.buildGraph = function (name, responses) {
     //     }
     // }
 
-    const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-
-    const seg = 1 / responses.length;
-
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
-        // all.colors.push(getApdexColor(r));
-
-        // gradientStroke.addColorStop(seg * idx, getApdexColor(r));
-
         return all;
     }, {labels: [], datasets: [], colors: []});
 
@@ -150,13 +142,7 @@ window.buildGraph = function (name, responses) {
             label: 'ms',
             data: quickData.datasets,
             fill: false,//'start',
-            // backgroundColor: quickData.gradientStroke,
-            // // backgroundColor: [
-            // //     '#64EDC6'
-            // // ],
             borderColor: '#7993F9'//quickData.colors,
-            // borderColor: quickData.gradientStroke,
-            // borderWidth: 1
         }]
     };
 
@@ -201,6 +187,31 @@ window.buildGraph = function (name, responses) {
                     mode: 'label'
                 }
             }
+            plugins: [
+                {
+                    id: "responsiveGradient",
+
+                    afterLayout: function(chart, options) {
+                        const scales = chart.scales;
+
+                        // create a linear gradient with the dimentions of the scale
+                        const color = chart.ctx.createLinearGradient(
+                            scales["x-axis-0"].left,
+                            scales["y-axis-0"].bottom,
+                            scales["x-axis-0"].right,
+                            scales["y-axis-0"].top
+                        );
+                        // add gradients stops
+                        color.addColorStop(0, "black");
+                        color.addColorStop(0.25, "red");
+                        color.addColorStop(0.5, "orange");
+                        color.addColorStop(0.75, "yellow");
+                        color.addColorStop(1, "green");
+                        // changes the background color option
+                        chart.data.datasets[0].backgroundColor = color;
+                    }
+                }
+            ]
         });
     }
 };
