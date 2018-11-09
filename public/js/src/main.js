@@ -191,15 +191,12 @@ window.buildGraph = function (name, responses) {
                 {
                     id: "responsiveGradient",
 
-                    afterLayout: function(chart, options) {
-                        const scales = chart.scales;
-
+                    afterLayout: function (chart, options) {
+                        const w = ctx.innerWidth;
+                        const h = ctx.innerHeight;
                         // create a linear gradient with the dimentions of the scale
                         const color = chart.ctx.createLinearGradient(
-                            scales["x-axis-0"].left,
-                            scales["y-axis-0"].bottom,
-                            scales["x-axis-0"].right,
-                            scales["y-axis-0"].top
+                            w / 2, 0, w / 2, h
                         );
                         // add gradients stops
                         color.addColorStop(0, "black");
