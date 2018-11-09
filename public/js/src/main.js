@@ -149,7 +149,7 @@ window.buildGraph = function (name, responses) {
         datasets: [{
             label: 'ms',
             data: quickData.datasets,
-            // fill: false,//'start',
+            fill: false,//'start',
             // backgroundColor: quickData.gradientStroke,
             // // backgroundColor: [
             // //     '#64EDC6'
