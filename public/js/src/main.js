@@ -186,29 +186,7 @@ window.buildGraph = function (name, responses) {
                 tooltip: {
                     mode: 'label'
                 }
-            },
-            plugins: [
-                {
-                    id: "responsiveGradient",
-
-                    afterLayout: function (chart, options) {
-                        const w = ctx.innerWidth;
-                        const h = ctx.innerHeight;
-                        // create a linear gradient with the dimentions of the scale
-                        const color = chart.ctx.createLinearGradient(
-                            0,0,0,500
-                        );
-                        // add gradients stops
-                        color.addColorStop(0, "black");
-                        color.addColorStop(0.25, "red");
-                        color.addColorStop(0.5, "orange");
-                        color.addColorStop(0.75, "yellow");
-                        color.addColorStop(1, "green");
-                        // changes the background color option
-                        chart.data.datasets[0].backgroundColor = color;
-                    }
-                }
-            ]
+            }
         });
     }
 };
