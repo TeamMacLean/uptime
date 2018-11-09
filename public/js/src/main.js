@@ -130,7 +130,7 @@ window.buildGraph = function (name, responses) {
         }
     }
 
-    const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+    const gradientStroke = ctx.createLinearGradient(0, 0, 0, 400);
 
     const seg = 1 / responses.length;
 
@@ -158,10 +158,10 @@ window.buildGraph = function (name, responses) {
 
 
             borderColor: quickData.gradientStroke,
-            pointBorderColor: quickData.gradientStroke,
-            pointBackgroundColor: quickData.gradientStroke,
-            pointHoverBackgroundColor: quickData.gradientStroke,
-            pointHoverBorderColor: quickData.gradientStroke,
+            // pointBorderColor: quickData.gradientStroke,
+            // pointBackgroundColor: quickData.gradientStroke,
+            // pointHoverBackgroundColor: quickData.gradientStroke,
+            // pointHoverBorderColor: quickData.gradientStroke,
 
             // borderWidth: 1
         }]
