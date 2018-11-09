@@ -196,7 +196,7 @@ window.buildGraph = function (name, responses) {
                         const h = ctx.innerHeight;
                         // create a linear gradient with the dimentions of the scale
                         const color = chart.ctx.createLinearGradient(
-                            w / 2, 0, w / 2, h
+                            0,0,0,500
                         );
                         // add gradients stops
                         color.addColorStop(0, "black");
