@@ -116,24 +116,24 @@ window.queue = new Queue();
 
 window.buildGraph = function (name, responses) {
 
-    function getApdexColor(response) {
-        const T = config.apdexT;
-
-        const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
-        if (timeInSeconds <= T) {
-            return '#55efc4';
-        } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
-            return '#ffeaa7'
-        } else {
-            return '#ff7675';
-        }
-    }
+    // function getApdexColor(response) {
+    //     const T = config.apdexT;
+    //
+    //     const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
+    //     if (timeInSeconds <= T) {
+    //         return '#55efc4';
+    //     } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
+    //         return '#ffeaa7'
+    //     } else {
+    //         return '#ff7675';
+    //     }
+    // }
 
     const quickData = responses.reduce((all, r) => {
 
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
-        all.colors.push(getApdexColor(r));
+        // all.colors.push(getApdexColor(r));
         return all;
     }, {labels: [], datasets: [], colors: []});
     const processedData = {
@@ -141,8 +141,8 @@ window.buildGraph = function (name, responses) {
         datasets: [{
             label: 'ms',
             data: quickData.datasets,
-            fill: false,//'start',
-            backgroundColor: quickData.colors,
+            // fill: false,//'start',
+            // backgroundColor: quickData.colors,
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
