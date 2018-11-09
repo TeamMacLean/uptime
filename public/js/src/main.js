@@ -115,27 +115,35 @@ window.queue = new Queue();
 
 
 window.buildGraph = function (name, responses) {
+    const ctx = document.getElementById("chart-" + name).getContext('2d');
 
-    // function getApdexColor(response) {
-    //     const T = config.apdexT;
-    //
-    //     const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
-    //     if (timeInSeconds <= T) {
-    //         return '#55efc4';
-    //     } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
-    //         return '#ffeaa7'
-    //     } else {
-    //         return '#ff7675';
-    //     }
-    // }
+    function getApdexColor(response) {
+        const T = config.apdexT;
 
-    const quickData = responses.reduce((all, r) => {
+        const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
+        if (timeInSeconds <= T) {
+            return '#55efc4';
+        } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
+            return '#ffeaa7'
+        } else {
+            return '#ff7675';
+        }
+    }
 
+    const gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
+
+    const seg = 1 / responses.length;
+
+    const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
         // all.colors.push(getApdexColor(r));
+
+        gradientStroke.addColorStop(seg * idx, getApdexColor(r));
+
         return all;
-    }, {labels: [], datasets: [], colors: []});
+    }, {labels: [], datasets: [], colors: [], gradientStroke});
+
     const processedData = {
         labels: quickData.labels,
         datasets: [{
@@ -146,13 +154,15 @@ window.buildGraph = function (name, responses) {
             // // backgroundColor: [
             // //     '#64EDC6'
             // // ],
-            // borderColor: responses.map(function (r) {
-            //     return r.up ? '#64EDC6' : '#ff7675';
-            // }),
-            // borderColor: [
-            //     '#a29bfe'//'#64EDC6'
-            // ],
-            borderColor: '#7993F9'//quickData.colors,
+            // borderColor: '#7993F9'//quickData.colors,
+
+
+            borderColor: quickData.gradientStroke,
+            pointBorderColor: quickData.gradientStroke,
+            pointBackgroundColor: quickData.gradientStroke,
+            pointHoverBackgroundColor: quickData.gradientStroke,
+            pointHoverBorderColor: quickData.gradientStroke,
+
             // borderWidth: 1
         }]
     };
@@ -161,7 +171,7 @@ window.buildGraph = function (name, responses) {
         window.charts[name].data = processedData;
         window.charts[name].update();
     } else {
-        var ctx = document.getElementById("chart-" + name).getContext('2d');
+
         window.charts[name] = new Chart(ctx, {
             type: 'line',//'bar',
             data: processedData,
