@@ -134,7 +134,7 @@ window.buildGraph = function (name, responses) {
         }
     }
 
-    const frag = 1 / responses.length - 2;
+    const frag = 1 / (responses.length - 2);
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
