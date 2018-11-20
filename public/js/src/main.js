@@ -140,7 +140,7 @@ window.buildGraph = function (name, responses) {
 
 
         let pos = 0;
-        idx  >= responses.length ? pos = 1 : pos = idx / (responses.length-3);
+        idx  >= responses.length ? pos = 1 : pos = idx / (responses.length-2);
 
         console.log(idx, responses.length, pos);
 
