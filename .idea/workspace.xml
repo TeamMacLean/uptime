@@ -59,7 +59,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="ejs" value="6767" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="15675" />
+          <entry key="js" value="15682" />
           <entry key="json" value="36" />
           <entry key="less" value="2618" />
           <entry key="www" value="40" />
@@ -70,7 +70,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="EJS" value="6767" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="15715" />
+          <entry key="JavaScript" value="15722" />
           <entry key="Less" value="2618" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -82,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="434">
-              <caret line="136" column="42" selection-start-line="136" selection-start-column="42" selection-end-line="136" selection-end-column="42" />
+            <state relative-caret-position="165">
+              <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -161,7 +161,6 @@
       <find>url</find>
       <find>createdAt</find>
       <find>creae</find>
-      <find>apdexT</find>
       <find>opac</find>
       <find>sl</find>
       <find>responses</find>
@@ -179,6 +178,7 @@
       <find>ctx</find>
       <find>webhookURL</find>
       <find>config.</find>
+      <find>apdexT</find>
     </findStrings>
     <replaceStrings>
       <replace>primary</replace>
@@ -740,8 +740,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="434">
-          <caret line="136" column="42" selection-start-line="136" selection-start-column="42" selection-end-line="136" selection-end-column="42" />
+        <state relative-caret-position="165">
+          <caret line="11" column="49" selection-start-line="11" selection-start-column="49" selection-end-line="11" selection-end-column="49" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>

@@ -1,6 +1,5 @@
 import moment from 'moment'
 import Chart from 'chart.js';
-import {apdexT} from '../../../config';
 
 window.Chart = Chart;
 window.moment = moment;
@@ -117,33 +116,11 @@ window.queue = new Queue();
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
-    const width = document.getElementById("chart-" + name).parentElement.clientWidth;
-    const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
-
-
-    function getApdexColor(response) {
-        const T = apdexT;
-
-        const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
-        if (timeInSeconds <= T) {
-            return '#55efc4';
-        } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
-            return '#ffeaa7'
-        } else {
-            return '#ff7675';
-        }
-    }
-
-    const frag = 1 / (responses.length - 7);
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
 
 
-        let pos = idx * frag;
-        if (pos > 1) pos = 1;
-
-        gradientStroke.addColorStop(pos, getApdexColor(r));
 
         return all;
     }, {labels: [], datasets: [], colors: []});
