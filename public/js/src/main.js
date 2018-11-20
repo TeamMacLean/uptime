@@ -124,30 +124,35 @@ window.buildGraph = function (name, responses) {
     const thirdColour = "#00BCD4";
     const fourthColour = "#1DE9B6";
 
-    gradientStroke.addColorStop(0, firstColour);
-    gradientStroke.addColorStop(0.3, secondColour);
-    gradientStroke.addColorStop(0.6, thirdColour);
-    gradientStroke.addColorStop(1, fourthColour);
+    // gradientStroke.addColorStop(0, firstColour);
+    // gradientStroke.addColorStop(0.3, secondColour);
+    // gradientStroke.addColorStop(0.6, thirdColour);
+    // gradientStroke.addColorStop(1, fourthColour);
 
 
-    // function getApdexColor(response) {
-    //     const T = config.apdexT;
-    //
-    //     const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
-    //     if (timeInSeconds <= T) {
-    //         return '#55efc4';
-    //     } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
-    //         return '#ffeaa7'
-    //     } else {
-    //         return '#ff7675';
-    //     }
-    // }
+    function getApdexColor(response) {
+        const T = config.apdexT;
+
+        const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
+        if (timeInSeconds <= T) {
+            return '#55efc4';
+        } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
+            return '#ffeaa7'
+        } else {
+            return '#ff7675';
+        }
+    }
 
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
+
+
+        gradientStroke.addColorStop((responses.length / 100) * idx, getApdexColor(r));
+
         return all;
     }, {labels: [], datasets: [], colors: []});
+
 
     const processedData = {
         labels: quickData.labels,
