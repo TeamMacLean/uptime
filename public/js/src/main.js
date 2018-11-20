@@ -182,7 +182,6 @@ window.buildGraph = function (name, responses) {
             type: 'line',//'bar',
             data: processedData,
             options: {
-                maintainAspectRatio: false,
                 legend: {
                     display: false
                 },
