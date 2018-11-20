@@ -140,7 +140,7 @@ window.buildGraph = function (name, responses) {
 
 
         let pos = 0;
-        idx + 1 === responses.length ? pos = 1 : pos = idx / (responses.length-1);
+        idx + 1 === responses.length ? pos = 1 : pos = idx / (responses.length-5);
 
         gradientStroke.addColorStop(pos, getApdexColor(r));
 
