@@ -164,11 +164,11 @@ window.buildGraph = function (name, responses) {
             pointHoverBackgroundColor: gradientStroke,
             pointHoverBorderColor: gradientStroke,
 
-            pointBorderWidth: 8,
-            pointHoverRadius: 8,
-            pointHoverBorderWidth: 1,
-            pointRadius: 3,
-            borderWidth: 4,
+            // pointBorderWidth: 8,
+            // pointHoverRadius: 8,
+            // pointHoverBorderWidth: 1,
+            // pointRadius: 3,
+            // borderWidth: 4,
 
         }]
     };
