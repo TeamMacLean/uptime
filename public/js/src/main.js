@@ -139,8 +139,9 @@ window.buildGraph = function (name, responses) {
         all.datasets.push(r.responseTime.toFixed(2));
 
 
+        let outof = responses.length -2;
         let pos = 0;
-        idx  >= responses.length ? pos = 1 : pos = idx / (responses.length-2);
+        idx  >= outof ? pos = 1 : pos = idx / (outof);
 
         console.log(idx, responses.length, pos);
 
