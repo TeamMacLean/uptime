@@ -121,6 +121,7 @@ window.buildGraph = function (name, responses) {
     const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
 
 
+
     function getApdexColor(response) {
         const T = apdexT;
 
@@ -155,10 +156,10 @@ window.buildGraph = function (name, responses) {
 
 
             borderColor: gradientStroke,
-            // pointBorderColor: gradientStroke,
-            // pointBackgroundColor: gradientStroke,
-            // pointHoverBackgroundColor: gradientStroke,
-            // pointHoverBorderColor: gradientStroke,
+            pointBorderColor: gradientStroke,
+            pointBackgroundColor: gradientStroke,
+            pointHoverBackgroundColor: gradientStroke,
+            pointHoverBorderColor: gradientStroke,
 
             borderWidth: 4,
 
