@@ -116,11 +116,23 @@ window.queue = new Queue();
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
+    const width = document.getElementById("chart-" + name).parentElement.clientWidth;
+    const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
+
+    gradientStroke.addColorStop(0, "#7C4DFF");
+    gradientStroke.addColorStop(0.3, "#448AFF");
+    gradientStroke.addColorStop(0.6, "#00BCD4");
+    gradientStroke.addColorStop(1, "#1DE9B6");
+
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
 
 
+        let pos = 0;
+        idx + 1 === responses.length ? pos = 1 : pos = idx / (responses.length - 5);
+
+        gradientStroke.addColorStop(pos, getApdexColor(r));
 
         return all;
     }, {labels: [], datasets: [], colors: []});
