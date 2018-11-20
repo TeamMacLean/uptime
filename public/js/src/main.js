@@ -139,9 +139,7 @@ window.buildGraph = function (name, responses) {
         all.datasets.push(r.responseTime.toFixed(2));
 
 
-        let pos = idx / (responses.length-1);
-
-        console.log(idx, responses.length, pos);
+        let pos = idx / (responses.length-2);
 
         gradientStroke.addColorStop(pos, getApdexColor(r));
 
