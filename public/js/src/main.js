@@ -120,10 +120,14 @@ window.buildGraph = function (name, responses) {
     const height = document.getElementById("chart-" + name).parentElement.clientHeight;
     const gradientStroke = ctx.createLinearGradient(0, height, 0, 0);
 
-    gradientStroke.addColorStop(0, "#7C4DFF");
-    gradientStroke.addColorStop(0.3, "#448AFF");
-    gradientStroke.addColorStop(0.6, "#00BCD4");
-    gradientStroke.addColorStop(1, "#1DE9B6");
+    // gradientStroke.addColorStop(0, "#7C4DFF");
+    // gradientStroke.addColorStop(0.3, "#448AFF");
+    // gradientStroke.addColorStop(0.6, "#00BCD4");
+    // gradientStroke.addColorStop(1, "#1DE9B6");
+
+    gradientStroke.addColorStop(0, "#ffeaa7");
+    gradientStroke.addColorStop(0.5, "#e17055");
+    gradientStroke.addColorStop(1, "#d63031");
 
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
