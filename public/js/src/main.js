@@ -119,15 +119,6 @@ window.buildGraph = function (name, responses) {
 
     const width = document.getElementById("chart-" + name).parentElement.clientWidth;
     const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
-    // const firstColour = "#7C4DFF";
-    // const secondColour = "#448AFF";
-    // const thirdColour = "#00BCD4";
-    // const fourthColour = "#1DE9B6";
-
-    // gradientStroke.addColorStop(0, firstColour);
-    // gradientStroke.addColorStop(0.3, secondColour);
-    // gradientStroke.addColorStop(0.6, thirdColour);
-    // gradientStroke.addColorStop(1, fourthColour);
 
 
     function getApdexColor(response) {
@@ -164,16 +155,12 @@ window.buildGraph = function (name, responses) {
 
 
             borderColor: gradientStroke,
-            pointBorderColor: gradientStroke,
-            pointBackgroundColor: gradientStroke,
-            pointHoverBackgroundColor: gradientStroke,
-            pointHoverBorderColor: gradientStroke,
+            // pointBorderColor: gradientStroke,
+            // pointBackgroundColor: gradientStroke,
+            // pointHoverBackgroundColor: gradientStroke,
+            // pointHoverBorderColor: gradientStroke,
 
-            // pointBorderWidth: 8,
-            // pointHoverRadius: 8,
-            // pointHoverBorderWidth: 1,
-            // pointRadius: 3,
-            // borderWidth: 4,
+            borderWidth: 4,
 
         }]
     };
