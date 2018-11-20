@@ -121,7 +121,6 @@ window.buildGraph = function (name, responses) {
     const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
 
 
-
     function getApdexColor(response) {
         const T = apdexT;
 
@@ -140,7 +139,10 @@ window.buildGraph = function (name, responses) {
         all.datasets.push(r.responseTime.toFixed(2));
 
 
-        gradientStroke.addColorStop((1 / responses.length) * (idx + 1), getApdexColor(r));
+        let pos = 0;
+        idx + 1 === responses.length ? pos = 1 : pos = idx / responses.length;
+
+        gradientStroke.addColorStop(pos, getApdexColor(r));
 
         return all;
     }, {labels: [], datasets: [], colors: []});
@@ -156,10 +158,10 @@ window.buildGraph = function (name, responses) {
 
 
             borderColor: gradientStroke,
-            pointBorderColor: gradientStroke,
-            pointBackgroundColor: gradientStroke,
-            pointHoverBackgroundColor: gradientStroke,
-            pointHoverBorderColor: gradientStroke,
+            // pointBorderColor: gradientStroke,
+            // pointBackgroundColor: gradientStroke,
+            // pointHoverBackgroundColor: gradientStroke,
+            // pointHoverBorderColor: gradientStroke,
 
             borderWidth: 4,
 
