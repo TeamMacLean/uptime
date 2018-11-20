@@ -148,7 +148,7 @@ window.buildGraph = function (name, responses) {
         all.datasets.push(r.responseTime.toFixed(2));
 
 
-        gradientStroke.addColorStop((responses.length / 100) * idx, getApdexColor(r));
+        gradientStroke.addColorStop((100 / responses.length) * idx, getApdexColor(r));
 
         return all;
     }, {labels: [], datasets: [], colors: []});

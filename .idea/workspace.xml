@@ -59,7 +59,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="ejs" value="6761" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="15342" />
+          <entry key="js" value="15348" />
           <entry key="json" value="36" />
           <entry key="less" value="2618" />
           <entry key="www" value="40" />
@@ -70,7 +70,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="EJS" value="6761" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="15382" />
+          <entry key="JavaScript" value="15388" />
           <entry key="Less" value="2618" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -83,7 +83,7 @@
         <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="596">
-              <caret line="150" column="86" selection-start-line="150" selection-start-column="86" selection-end-line="150" selection-end-column="86" />
+              <caret line="150" column="59" selection-start-line="150" selection-start-column="59" selection-end-line="150" selection-end-column="59" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -688,7 +688,7 @@
     <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="596">
-          <caret line="150" column="86" selection-start-line="150" selection-start-column="86" selection-end-line="150" selection-end-column="86" />
+          <caret line="150" column="59" selection-start-line="150" selection-start-column="59" selection-end-line="150" selection-end-column="59" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
