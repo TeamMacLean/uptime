@@ -117,6 +117,19 @@ window.queue = new Queue();
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
+    const width = window.innerWidth || document.body.clientWidth;
+    const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
+    const firstColour = "#F44336";
+    const secondColour = "#F50057";
+    const thirdColour = "#FF4081";
+    const fourthColour = "#FF9100";
+
+    gradientStroke.addColorStop(0, firstColour);
+    gradientStroke.addColorStop(0.3, secondColour);
+    gradientStroke.addColorStop(0.6, thirdColour);
+    gradientStroke.addColorStop(1, fourthColour);
+
+
     // function getApdexColor(response) {
     //     const T = config.apdexT;
     //
@@ -142,7 +155,21 @@ window.buildGraph = function (name, responses) {
             label: 'ms',
             data: quickData.datasets,
             fill: false,//'start',
-            borderColor: '#7993F9'//quickData.colors,
+            // borderColor: '#7993F9'//quickData.colors,
+
+
+            borderColor: gradientStroke,
+            pointBorderColor: gradientStroke,
+            pointBackgroundColor: gradientStroke,
+            pointHoverBackgroundColor: gradientStroke,
+            pointHoverBorderColor: gradientStroke,
+
+            pointBorderWidth: 8,
+            pointHoverRadius: 8,
+            pointHoverBorderWidth: 1,
+            pointRadius: 3,
+            borderWidth: 4,
+
         }]
     };
 
@@ -155,7 +182,7 @@ window.buildGraph = function (name, responses) {
             type: 'line',//'bar',
             data: processedData,
             options: {
-                // animation: false,
+                maintainAspectRatio: false,
                 legend: {
                     display: false
                 },
