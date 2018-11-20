@@ -1,6 +1,6 @@
 import moment from 'moment'
 import Chart from 'chart.js';
-import config from '../../../config';
+import {apdexT} from '../../../config';
 
 window.Chart = Chart;
 window.moment = moment;
@@ -119,10 +119,10 @@ window.buildGraph = function (name, responses) {
 
     const width = document.getElementById("chart-" + name).parentElement.clientWidth;
     const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
-    const firstColour = "#7C4DFF";
-    const secondColour = "#448AFF";
-    const thirdColour = "#00BCD4";
-    const fourthColour = "#1DE9B6";
+    // const firstColour = "#7C4DFF";
+    // const secondColour = "#448AFF";
+    // const thirdColour = "#00BCD4";
+    // const fourthColour = "#1DE9B6";
 
     // gradientStroke.addColorStop(0, firstColour);
     // gradientStroke.addColorStop(0.3, secondColour);
@@ -131,7 +131,7 @@ window.buildGraph = function (name, responses) {
 
 
     function getApdexColor(response) {
-        const T = config.apdexT;
+        const T = apdexT;
 
         const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
         if (timeInSeconds <= T) {
