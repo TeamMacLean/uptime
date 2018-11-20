@@ -31,7 +31,6 @@ router.route('/sites/new')
     .get(sites.new)
     .post(sites.newPost);
 router.route('/sites/:id')
-    .all(isAuthenticated)
     .get(sites.show);
 
 router.route('/sites/:id/edit')
