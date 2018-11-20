@@ -117,12 +117,12 @@ window.queue = new Queue();
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
-    const width = window.innerWidth || document.body.clientWidth;
+    const width = document.getElementById("chart-" + name).parentElement.clientWidth;
     const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
-    const firstColour = "#F44336";
-    const secondColour = "#F50057";
-    const thirdColour = "#FF4081";
-    const fourthColour = "#FF9100";
+    const firstColour = "#7C4DFF";
+    const secondColour = "#448AFF";
+    const thirdColour = "#00BCD4";
+    const fourthColour = "#1DE9B6";
 
     gradientStroke.addColorStop(0, firstColour);
     gradientStroke.addColorStop(0.3, secondColour);
