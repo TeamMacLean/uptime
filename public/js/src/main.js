@@ -134,12 +134,13 @@ window.buildGraph = function (name, responses) {
         }
     }
 
+    const frag = 1 / responses.length;
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
 
 
-        let pos = idx / (responses.length-2);
+        let pos = idx * frag;
 
         gradientStroke.addColorStop(pos, getApdexColor(r));
 
