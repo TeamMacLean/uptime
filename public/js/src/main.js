@@ -117,7 +117,8 @@ window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
     const width = document.getElementById("chart-" + name).parentElement.clientWidth;
-    const gradientStroke = ctx.createLinearGradient(0, 0, width, 0);
+    const height = document.getElementById("chart-" + name).parentElement.clientHeight;
+    const gradientStroke = ctx.createLinearGradient(0, height, 0, 0);
 
     gradientStroke.addColorStop(0, "#7C4DFF");
     gradientStroke.addColorStop(0.3, "#448AFF");
