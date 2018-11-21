@@ -201,7 +201,7 @@ window.buildGraph = function (name, responses) {
                 tooltip: {
                     mode: 'label'
                 }
-            }
+            },
             plugins: [
                 {
                     id: "responsiveGradient",
