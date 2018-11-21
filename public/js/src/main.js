@@ -225,7 +225,7 @@ window.buildGraph = function (name, responses) {
                         color.addColorStop(0.75, "yellow");
                         color.addColorStop(1, "green");
                         // changes the background color option
-                        chart.data.datasets[0].backgroundColor = color;
+                        chart.data.datasets[0].borderColor = color;
 
 
 
