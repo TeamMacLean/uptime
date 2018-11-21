@@ -118,24 +118,6 @@ window.queue = new Queue();
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
-    // const width = document.getElementById("chart-" + name).parentElement.clientWidth;
-    // const height = document.getElementById("chart-" + name).height;
-    // const gradientStroke = ctx.createLinearGradient(0, height*0.9, 0, 0);
-
-    // function getApdexColor(response) {
-    //     const T = apdexT;
-    //
-    //     const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
-    //     if (timeInSeconds <= T) {
-    //         return '#55efc4';
-    //     } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
-    //         return '#ffeaa7'
-    //     } else {
-    //         return '#ff7675';
-    //     }
-    // }
-
-
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
@@ -221,14 +203,15 @@ window.buildGraph = function (name, responses) {
                         color.addColorStop(0, "#5DEEC4");
                         const max = Math.max(...quickData.datasets);
                         const bit = 1 / max;
-                        if (max < apdexT) {
+                        const apdexTInMS = apdexT * 1000;
+                        if (max < apdexTInMS) {
                             color.addColorStop(1, "#5DEEC4");
                         }
-                        if (max >= apdexT) {
-                            color.addColorStop(bit * apdexT, "#FEDB62");
+                        if (max >= apdexTInMS) {
+                            color.addColorStop(bit * apdexTInMS, "#FEDB62");
                         }
-                        if (max >= (apdexT * 2)) {
-                            color.addColorStop(bit * (apdexT * 2), "#FC3C63");
+                        if (max >= (apdexTInMS * 2)) {
+                            color.addColorStop(bit * (apdexTInMS * 2), "#FC3C63");
                             color.addColorStop(1, "#FC3C63");
                         }
 
