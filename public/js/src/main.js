@@ -113,6 +113,9 @@ function Queue() {
 
 window.queue = new Queue();
 
+const safe = '#2CDCBE';
+const warn = '#24B1DD';
+const danger = '#725EFB';
 
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
@@ -133,7 +136,7 @@ window.buildGraph = function (name, responses) {
             // borderColor: '#7993F9'//quickData.colors,
 
 
-            borderColor: '#5DEEC4',//gradientStroke,
+            borderColor: safe,//gradientStroke,
             // pointBorderColor: gradientStroke,
             // pointBackgroundColor: gradientStroke,
             // pointHoverBackgroundColor: gradientStroke,
@@ -199,18 +202,18 @@ window.buildGraph = function (name, responses) {
                             scales["y-axis-0"].top
                         );
 
-                        color.addColorStop(0, "#5DEEC4");
+                        color.addColorStop(0, safe);
                         const max = Math.max(...quickData.datasets);
                         const bit = 1 / max;
                         if (max < apdexTInMS) {
-                            color.addColorStop(1, "#5DEEC4");
+                            color.addColorStop(1, safe);
                         }
                         if (max >= apdexTInMS) {
-                            color.addColorStop(bit * apdexTInMS, "#FEDB62");
+                            color.addColorStop(bit * apdexTInMS, warn);
                         }
                         if (max >= (apdexTInMS * 2)) {
-                            color.addColorStop(bit * (apdexTInMS * 2), "#FC3C63");
-                            color.addColorStop(1, "#FC3C63");
+                            color.addColorStop(bit * (apdexTInMS * 2), danger);
+                            color.addColorStop(1, danger);
                         }
 
                         chart.data.datasets[0].borderColor = color;
