@@ -1,6 +1,5 @@
 import moment from 'moment'
 import Chart from 'chart.js';
-// import {apdexT} from '../../../config';
 window.Chart = Chart;
 window.moment = moment;
 
@@ -190,10 +189,10 @@ window.buildGraph = function (name, responses) {
                     id: "responsiveGradient",
 
                     afterLayout: function (chart, options) {
-                        var scales = chart.scales;
+                        const scales = chart.scales;
 
                         // create a linear gradient with the dimentions of the scale
-                        var color = chart.ctx.createLinearGradient(
+                        const color = chart.ctx.createLinearGradient(
                             0,//scales["x-axis-0"].left,
                             scales["y-axis-0"].bottom,
                             0,//scales["x-axis-0"].right,
