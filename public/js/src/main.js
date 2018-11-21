@@ -119,7 +119,7 @@ window.buildGraph = function (name, responses) {
 
     // const width = document.getElementById("chart-" + name).parentElement.clientWidth;
     const height = document.getElementById("chart-" + name).parentElement.clientHeight;
-    const gradientStroke = ctx.createLinearGradient(0, height, 0, 0);
+    const gradientStroke = ctx.createLinearGradient(0, height*0.9, 0, 0);
 
     // function getApdexColor(response) {
     //     const T = apdexT;
