@@ -151,7 +151,7 @@ window.buildGraph = function (name, responses) {
             // borderColor: '#7993F9'//quickData.colors,
 
 
-            borderColor: gradientStroke,
+            borderColor: '#5DEEC4',//gradientStroke,
             // pointBorderColor: gradientStroke,
             // pointBackgroundColor: gradientStroke,
             // pointHoverBackgroundColor: gradientStroke,
