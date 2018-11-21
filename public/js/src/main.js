@@ -123,35 +123,6 @@ const safe = '#2CDCBE';
 const warn = '#FEDB62';
 const danger = '#FC3C63';
 
-function setGraphColors(chart, data){
-    const scales = chart.scales;
-
-    // create a linear gradient with the dimentions of the scale
-    const color = chart.ctx.createLinearGradient(
-        0,//scales["x-axis-0"].left,
-        scales["y-axis-0"].bottom,
-        0,//scales["x-axis-0"].right,
-        scales["y-axis-0"].top
-    ); //vertical
-
-    color.addColorStop(0, safe);
-    const max = Math.max(...data.datasets);
-    const bit = 1 / max;
-
-    if (max < apdexTInMS) {
-        color.addColorStop(1, safe);
-    } else {
-        if (max >= apdexTInMS) {
-            color.addColorStop(bit * apdexTInMS, warn);
-        }
-        if (max >= (apdexTInMS * 2)) {
-            color.addColorStop(bit * (apdexTInMS * 2), danger);
-            color.addColorStop(1, danger);
-        }
-    }
-
-    chart.data.datasets[0].borderColor = color;
-}
 
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
@@ -229,39 +200,42 @@ window.buildGraph = function (name, responses) {
 
                     afterLayout: function (chart, options) {
 
-                        setGraphColors(chart, quickData);
 
-                        // const scales = chart.scales;
-                        //
-                        // // create a linear gradient with the dimentions of the scale
-                        // const color = chart.ctx.createLinearGradient(
-                        //     0,//scales["x-axis-0"].left,
-                        //     scales["y-axis-0"].bottom,
-                        //     0,//scales["x-axis-0"].right,
-                        //     scales["y-axis-0"].top
-                        // ); //vertical
-                        //
-                        // color.addColorStop(0, safe);
-                        // const max = Math.max(...quickData.datasets);
-                        // const bit = 1 / max;
-                        //
-                        // if (max < apdexTInMS) {
-                        //     color.addColorStop(1, safe);
-                        // } else {
-                        //     if (max >= apdexTInMS) {
-                        //         color.addColorStop(bit * apdexTInMS, warn);
-                        //     }
-                        //     if (max >= (apdexTInMS * 2)) {
-                        //         color.addColorStop(bit * (apdexTInMS * 2), danger);
-                        //         color.addColorStop(1, danger);
-                        //     }
-                        // }
-                        //
-                        // chart.data.datasets[0].borderColor = color;
+                        const scales = chart.scales;
+
+                        // create a linear gradient with the dimentions of the scale
+                        const color = chart.ctx.createLinearGradient(
+                            0,//scales["x-axis-0"].left,
+                            scales["y-axis-0"].bottom,
+                            0,//scales["x-axis-0"].right,
+                            scales["y-axis-0"].top
+                        ); //vertical
+
+                        color.addColorStop(0, safe);
+                        const max = Math.max(...quickData.datasets);
+                        const bit = 1 / max;
+
+                        if (max < apdexTInMS) {
+                            color.addColorStop(1, safe);
+                        } else {
+                            if (max >= apdexTInMS) {
+                                color.addColorStop(bit * apdexTInMS, warn);
+
+                                if (max >= (apdexTInMS * 2)) {
+                                    color.addColorStop(bit * (apdexTInMS * 2), danger);
+                                    color.addColorStop(1, danger);
+                                } else {
+                                    color.addColorStop(1, warn);
+                                }
+
+                            }
+
+                        }
+
+                        chart.data.datasets[0].borderColor = color;
                     }
                 }
             ]
         });
-        setGraphColors(window.charts[name], quickData);
     }
 };
