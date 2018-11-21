@@ -118,7 +118,7 @@ window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
     // const width = document.getElementById("chart-" + name).parentElement.clientWidth;
-    const height = document.getElementById("chart-" + name).parentElement.clientHeight;
+    const height = document.getElementById("chart-" + name).height;
     const gradientStroke = ctx.createLinearGradient(0, height*0.9, 0, 0);
 
     // function getApdexColor(response) {
@@ -140,29 +140,6 @@ window.buildGraph = function (name, responses) {
         all.datasets.push(r.responseTime.toFixed(2));
         return all;
     }, {labels: [], datasets: [], colors: []});
-
-
-    gradientStroke.addColorStop(0, "#5DEEC4");
-
-
-    const max = Math.max(...quickData.datasets);
-
-    const bit = 1 / max;
-
-    if (max < apdexT) {
-        gradientStroke.addColorStop(1, "#5DEEC4");
-    }
-
-    if (max >= apdexT) {
-        gradientStroke.addColorStop(bit * apdexT, "#FEDB62");
-    }
-
-    if (max >= (apdexT * 2)) {
-        gradientStroke.addColorStop(bit * (apdexT * 2), "#FC3C63");
-        gradientStroke.addColorStop(1, "#FC3C63");
-    }
-
-    console.log('max:', max);
 
 
     const processedData = {
@@ -225,6 +202,57 @@ window.buildGraph = function (name, responses) {
                     mode: 'label'
                 }
             }
+            plugins: [
+                {
+                    id: "responsiveGradient",
+
+                    afterLayout: function(chart, options) {
+                        var scales = chart.scales;
+
+                        // create a linear gradient with the dimentions of the scale
+                        var color = chart.ctx.createLinearGradient(
+                            scales["x-axis-0"].left,
+                            scales["y-axis-0"].bottom,
+                            scales["x-axis-0"].right,
+                            scales["y-axis-0"].top
+                        );
+
+                        console.log(scales);
+                        // add gradients stops
+                        color.addColorStop(0, "black");
+                        color.addColorStop(0.25, "red");
+                        color.addColorStop(0.5, "orange");
+                        color.addColorStop(0.75, "yellow");
+                        color.addColorStop(1, "green");
+                        // changes the background color option
+                        chart.data.datasets[0].backgroundColor = color;
+
+
+
+
+
+
+
+
+                        //
+                        // gradientStroke.addColorStop(0, "#5DEEC4");
+                        // const max = Math.max(...quickData.datasets);
+                        // const bit = 1 / max;
+                        // if (max < apdexT) {
+                        //     gradientStroke.addColorStop(1, "#5DEEC4");
+                        // }
+                        // if (max >= apdexT) {
+                        //     gradientStroke.addColorStop(bit * apdexT, "#FEDB62");
+                        // }
+                        // if (max >= (apdexT * 2)) {
+                        //     gradientStroke.addColorStop(bit * (apdexT * 2), "#FC3C63");
+                        //     gradientStroke.addColorStop(1, "#FC3C63");
+                        // }
+
+
+                    }
+                }
+            ]
         });
     }
 };

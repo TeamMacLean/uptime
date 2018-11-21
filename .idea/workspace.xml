@@ -59,7 +59,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="ejs" value="6772" />
           <entry key="gitignore" value="35" />
-          <entry key="js" value="16302" />
+          <entry key="js" value="16358" />
           <entry key="json" value="36" />
           <entry key="less" value="2805" />
           <entry key="www" value="40" />
@@ -70,7 +70,7 @@
           <entry key="Dockerfile" value="55" />
           <entry key="EJS" value="6772" />
           <entry key="JSON" value="36" />
-          <entry key="JavaScript" value="16342" />
+          <entry key="JavaScript" value="16398" />
           <entry key="Less" value="2805" />
           <entry key="PLAIN_TEXT" value="35" />
         </counts>
@@ -82,8 +82,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="84">
-              <caret line="121" column="65" selection-start-line="121" selection-start-column="65" selection-end-line="121" selection-end-column="65" />
+            <state relative-caret-position="739">
+              <caret line="249" column="28" lean-forward="true" selection-start-line="236" selection-start-column="26" selection-end-line="249" selection-end-column="28" />
               <folding>
                 <element signature="e#0#27#0" expanded="true" />
               </folding>
@@ -724,8 +724,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/src/main.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="121" column="65" selection-start-line="121" selection-start-column="65" selection-end-line="121" selection-end-column="65" />
+        <state relative-caret-position="739">
+          <caret line="249" column="28" lean-forward="true" selection-start-line="236" selection-start-column="26" selection-end-line="249" selection-end-column="28" />
           <folding>
             <element signature="e#0#27#0" expanded="true" />
           </folding>
