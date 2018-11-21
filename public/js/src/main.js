@@ -1,12 +1,13 @@
 import moment from 'moment'
 import Chart from 'chart.js';
 // import {apdexT} from '../../../config';
-const apdexT = 200;
 window.Chart = Chart;
 window.moment = moment;
 
 window.charts = [];
 window.dataSets = [];
+
+import apdexT from '../../../lib/configWrapper';
 
 
 function fixBrokenImages() {
@@ -216,14 +217,6 @@ window.buildGraph = function (name, responses) {
                             0,//scales["x-axis-0"].right,
                             scales["y-axis-0"].top
                         );
-
-                        // add gradients stops
-                        // color.addColorStop(0, "black");
-                        // color.addColorStop(0.25, "red");
-                        // color.addColorStop(0.5, "orange");
-                        // color.addColorStop(0.75, "yellow");
-                        // color.addColorStop(1, "green");
-                        // changes the background color option
 
                         color.addColorStop(0, "#5DEEC4");
                         const max = Math.max(...quickData.datasets);
