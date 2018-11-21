@@ -1,7 +1,7 @@
 import moment from 'moment'
 import Chart from 'chart.js';
 // import {apdexT} from '../../../config';
-const apdexT = 0.2;
+const apdexT = 200;
 window.Chart = Chart;
 window.moment = moment;
 
