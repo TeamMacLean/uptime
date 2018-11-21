@@ -118,8 +118,8 @@ window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
     // const width = document.getElementById("chart-" + name).parentElement.clientWidth;
-    const height = document.getElementById("chart-" + name).height;
-    const gradientStroke = ctx.createLinearGradient(0, height*0.9, 0, 0);
+    // const height = document.getElementById("chart-" + name).height;
+    // const gradientStroke = ctx.createLinearGradient(0, height*0.9, 0, 0);
 
     // function getApdexColor(response) {
     //     const T = apdexT;
@@ -217,14 +217,28 @@ window.buildGraph = function (name, responses) {
                             scales["y-axis-0"].top
                         );
 
-                        console.log(scales);
                         // add gradients stops
-                        color.addColorStop(0, "black");
-                        color.addColorStop(0.25, "red");
-                        color.addColorStop(0.5, "orange");
-                        color.addColorStop(0.75, "yellow");
-                        color.addColorStop(1, "green");
+                        // color.addColorStop(0, "black");
+                        // color.addColorStop(0.25, "red");
+                        // color.addColorStop(0.5, "orange");
+                        // color.addColorStop(0.75, "yellow");
+                        // color.addColorStop(1, "green");
                         // changes the background color option
+
+                        color.addColorStop(0, "#5DEEC4");
+                        const max = Math.max(...quickData.datasets);
+                        const bit = 1 / max;
+                        if (max < apdexT) {
+                            color.addColorStop(1, "#5DEEC4");
+                        }
+                        if (max >= apdexT) {
+                            color.addColorStop(bit * apdexT, "#FEDB62");
+                        }
+                        if (max >= (apdexT * 2)) {
+                            color.addColorStop(bit * (apdexT * 2), "#FC3C63");
+                            color.addColorStop(1, "#FC3C63");
+                        }
+
                         chart.data.datasets[0].borderColor = color;
 
 
@@ -235,19 +249,7 @@ window.buildGraph = function (name, responses) {
 
 
                         //
-                        // gradientStroke.addColorStop(0, "#5DEEC4");
-                        // const max = Math.max(...quickData.datasets);
-                        // const bit = 1 / max;
-                        // if (max < apdexT) {
-                        //     gradientStroke.addColorStop(1, "#5DEEC4");
-                        // }
-                        // if (max >= apdexT) {
-                        //     gradientStroke.addColorStop(bit * apdexT, "#FEDB62");
-                        // }
-                        // if (max >= (apdexT * 2)) {
-                        //     gradientStroke.addColorStop(bit * (apdexT * 2), "#FC3C63");
-                        //     gradientStroke.addColorStop(1, "#FC3C63");
-                        // }
+
 
 
                     }
