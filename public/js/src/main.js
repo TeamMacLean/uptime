@@ -7,7 +7,7 @@ window.moment = moment;
 window.charts = [];
 window.dataSets = [];
 
-import apdexT from '../../../lib/configWrapper';
+import {apdexT} from '../../../lib/configWrapper';
 
 
 function fixBrokenImages() {
