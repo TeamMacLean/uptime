@@ -204,6 +204,7 @@ window.buildGraph = function (name, responses) {
                         const max = Math.max(...quickData.datasets);
                         const bit = 1 / max;
                         const apdexTInMS = apdexT * 1000;
+                        console.log(apdexTInMS, apdexT);
                         if (max < apdexTInMS) {
                             color.addColorStop(1, "#5DEEC4");
                         }
