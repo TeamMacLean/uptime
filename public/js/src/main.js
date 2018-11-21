@@ -6,8 +6,8 @@ window.moment = moment;
 window.charts = [];
 window.dataSets = [];
 
-import {apdexT} from '../../../lib/configWrapper';
-
+const apdexT = require('../../../config').apdexT;
+const apdexTInMS = apdexT * 1000;
 
 function fixBrokenImages() {
     const img = document.getElementsByTagName('img');
@@ -202,8 +202,6 @@ window.buildGraph = function (name, responses) {
                         color.addColorStop(0, "#5DEEC4");
                         const max = Math.max(...quickData.datasets);
                         const bit = 1 / max;
-                        const apdexTInMS = apdexT * 1000;
-                        console.log(apdexTInMS, apdexT);
                         if (max < apdexTInMS) {
                             color.addColorStop(1, "#5DEEC4");
                         }
