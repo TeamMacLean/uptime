@@ -158,6 +158,7 @@ window.buildGraph = function (name, responses) {
     }
 
     if (max >= (apdexT * 2)) {
+        gradientStroke.addColorStop(bit * (apdexT * 2), "#FC3C63");
         gradientStroke.addColorStop(1, "#FC3C63");
     }
 
