@@ -145,7 +145,7 @@ window.buildGraph = function (name, responses) {
     gradientStroke.addColorStop(0, "#5DEEC4");
 
 
-    const max = Math.max(quickData.datasets);
+    const max = Math.max(...quickData.datasets);
 
     const bit = 1 / max;
 
@@ -157,7 +157,7 @@ window.buildGraph = function (name, responses) {
         gradientStroke.addColorStop(bit * apdexT, "#FEDB62");
     }
 
-    if (max >= (apdexT * 2)){
+    if (max >= (apdexT * 2)) {
         gradientStroke.addColorStop(bit * (apdexT * 2), "#FC3C63");
     }
 
