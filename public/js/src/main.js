@@ -206,14 +206,14 @@ window.buildGraph = function (name, responses) {
                 {
                     id: "responsiveGradient",
 
-                    afterLayout: function(chart, options) {
+                    afterLayout: function (chart, options) {
                         var scales = chart.scales;
 
                         // create a linear gradient with the dimentions of the scale
                         var color = chart.ctx.createLinearGradient(
-                            scales["x-axis-0"].left,
+                            0,//scales["x-axis-0"].left,
                             scales["y-axis-0"].bottom,
-                            scales["x-axis-0"].right,
+                            0,//scales["x-axis-0"].right,
                             scales["y-axis-0"].top
                         );
 
@@ -242,14 +242,7 @@ window.buildGraph = function (name, responses) {
                         chart.data.datasets[0].borderColor = color;
 
 
-
-
-
-
-
-
                         //
-
 
 
                     }
