@@ -1,4 +1,4 @@
 node_modules/
 .cache/
-
 config.js
+public/js/dist

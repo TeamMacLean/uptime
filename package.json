@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "build": "node_modules/.bin/parcel build public/js/src/*.js -d public/js",
-    "watch": "node_modules/.bin/parcel watch public/js/src/*.js -d public/js"
+    "build": "node_modules/.bin/parcel build public/js/src/*.js -d public/js/dist",
+    "watch": "node_modules/.bin/parcel watch public/js/src/*.js -d public/js/dist"
   },
   "dependencies": {
     "basic-auth": "latest",
