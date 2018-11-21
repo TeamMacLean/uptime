@@ -11,6 +11,7 @@ const LocalStrategy = require('passport-local');
 
 
 const config = require('./config');
+
 const app = express();
 const User = require('./models/user');
 

@@ -1,6 +1,7 @@
 import moment from 'moment'
 import Chart from 'chart.js';
-
+// import {apdexT} from '../../../config';
+const apdexT = 0.2;
 window.Chart = Chart;
 window.moment = moment;
 
@@ -116,26 +117,48 @@ window.queue = new Queue();
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
-    const width = document.getElementById("chart-" + name).parentElement.clientWidth;
+    // const width = document.getElementById("chart-" + name).parentElement.clientWidth;
     const height = document.getElementById("chart-" + name).parentElement.clientHeight;
     const gradientStroke = ctx.createLinearGradient(0, height, 0, 0);
 
-    // gradientStroke.addColorStop(0, "#7C4DFF");
-    // gradientStroke.addColorStop(0.3, "#448AFF");
-    // gradientStroke.addColorStop(0.6, "#00BCD4");
-    // gradientStroke.addColorStop(1, "#1DE9B6");
+    // function getApdexColor(response) {
+    //     const T = apdexT;
+    //
+    //     const timeInSeconds = response.up ? response.responseTime / 1000 : 999999;//to seconds
+    //     if (timeInSeconds <= T) {
+    //         return '#55efc4';
+    //     } else if (timeInSeconds > T && timeInSeconds <= (T * 4)) {
+    //         return '#ffeaa7'
+    //     } else {
+    //         return '#ff7675';
+    //     }
+    // }
 
-    gradientStroke.addColorStop(0, "#ffeaa7");
-    gradientStroke.addColorStop(0.5, "#e17055");
-    gradientStroke.addColorStop(1, "#d63031");
 
     const quickData = responses.reduce((all, r, idx) => {
         all.labels.push(moment(r.createdAt).calendar());
         all.datasets.push(r.responseTime.toFixed(2));
-
-
         return all;
     }, {labels: [], datasets: [], colors: []});
+
+
+    gradientStroke.addColorStop(0, "#5DEEC4");
+
+
+    const max = Math.max(quickData.datasets);
+
+    const bit = 1 / max;
+
+    if (max < apdexT) {
+        gradientStroke.addColorStop(1, "#5DEEC4");
+    }
+
+    if (max >= apdexT) {
+        gradientStroke.addColorStop(bit * apdexT, "#FEDB62");
+    }
+    if (max >= (apdexT * 2){
+        gradientStroke.addColorStop(bit * (apdexT * 2), "#FC3C63");
+    }
 
 
     const processedData = {
