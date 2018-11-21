@@ -113,9 +113,13 @@ function Queue() {
 
 window.queue = new Queue();
 
+// const safe = '#2CDCBE';
+// const warn = '#24B1DD';
+// const danger = '#725EFB';
+
 const safe = '#2CDCBE';
-const warn = '#24B1DD';
-const danger = '#725EFB';
+const warn = '#FF9100';
+const danger = '#d63031';
 
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
