@@ -118,8 +118,8 @@ window.queue = new Queue();
 // const danger = '#725EFB';
 
 const safe = '#2CDCBE';
-const warn = '#FF9100';
-const danger = '#d63031';
+const warn = '#FEDB62';
+const danger = '#FC3C63';
 
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
