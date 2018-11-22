@@ -41,9 +41,9 @@ module.exports = {
                 case 'month':
                     range = month;
                     break;
-                case 'year':
-                    range = year;
-                    break;
+                // case 'year':
+                //     range = year;
+                //     break;
                 default:
                     range = day;
                     break;
