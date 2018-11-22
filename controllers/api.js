@@ -12,7 +12,7 @@ module.exports = {
             })
             .catch(err => {
                 return res.status(401).send(err);
-            })
+            });
 
 
     },
@@ -69,9 +69,7 @@ module.exports = {
 
                 const oldArr = site.responses.reverse();
                 let filteredArray = [];
-
                 const maxVal = 100;
-
                 const delta = Math.floor(oldArr.length / maxVal);
 
 
