@@ -10,14 +10,45 @@
         apdex: site.apdex,
         outages: site.outages,
         up: site.up,
-        url:site.url,
+        url: site.url,
         siteID: site.id
     }
     %>
 
     <% include ../_card.ejs %>
 
-    <a href="/sites/<%-site.id%>/edit" class="btn primary">Edit</a>
+    <a href="/sites/<%- site.id %>/edit" class="btn primary">Edit</a>
+
+    <section class="section"><!-- events -->
+        <h2 class="center">Events</h2>
+
+        <br>
+
+        <% if(!site.events || site.events.length < 1){ %>
+            <p class="center">None</p>
+        <% } %>
+
+        <% site.events.map(event => { %>
+
+            <div class="card">
+                <div class="level">
+                    <div class="level-item center">
+                        <div>
+                            <p class="heading">Event</p>
+                            <p class="title <%- event.up ? "success" : "danger" %>"><%- event.up ? "Up" : "Down" %></p>
+                        </div>
+                    </div>
+                    <div class="level-item center">
+                        <div>
+                            <p class="heading">Date</p>
+                            <p class="title"><%- event.humanDate() %></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <% }); %>
+    </section>
 
 </div>
 

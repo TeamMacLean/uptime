@@ -200,7 +200,6 @@ window.buildGraph = function (name, responses) {
 
                     afterLayout: function (chart, options) {
 
-
                         const scales = chart.scales;
 
                         // create a linear gradient with the dimentions of the scale
@@ -211,9 +210,12 @@ window.buildGraph = function (name, responses) {
                             scales["y-axis-0"].top
                         ); //vertical
 
-                        color.addColorStop(0, safe);
+
                         const max = Math.max(...quickData.datasets);
                         const bit = 1 / max;
+
+                        color.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
+                        color.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
 
                         if (max < apdexTInMS) {
                             color.addColorStop(1, safe);
@@ -227,11 +229,8 @@ window.buildGraph = function (name, responses) {
                                 } else {
                                     color.addColorStop(1, warn);
                                 }
-
                             }
-
                         }
-
                         chart.data.datasets[0].borderColor = color;
                     }
                 }
