@@ -23,52 +23,6 @@ function fixBrokenImages() {
     }
 }
 
-Chart.pluginService.register({
-    afterUpdate: function (chart) {
-        // const dsMeta = chart.getDatasetMeta(i);
-        // const dataset = chart.config.data.datasets[i];
-        // for (let j = 0; j < dataset.data.length; j++) {
-        // const model = dsMeta.data[j]._model;
-
-        const scales = chart.scales;
-
-        // create a linear gradient with the dimentions of the scale
-        const gradient = chart.ctx.createLinearGradient(
-            0,//scales["x-axis-0"].left,
-            scales["y-axis-0"].bottom,
-            0,//scales["x-axis-0"].right,
-            scales["y-axis-0"].top
-        ); //vertical
-
-
-        const max = Math.max(...chart.config.data.datasets);
-        const bit = 1 / max;
-
-        gradient.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
-        gradient.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
-
-        if (max < apdexTInMS) {
-            gradient.addColorStop(1, safe);
-        } else {
-            if (max >= apdexTInMS) {
-                gradient.addColorStop(bit * apdexTInMS, warn);
-
-                if (max >= (apdexTInMS * 2)) {
-                    gradient.addColorStop(bit * (apdexTInMS * 2), danger);
-                    gradient.addColorStop(1, danger);
-                } else {
-                    gradient.addColorStop(1, warn);
-                }
-            }
-        }
-
-        chart.data.datasets[0].backgroundColor = gradient;
-        chart.data.datasets[0].borderColor = color;
-    }
-    // }
-    // }
-});
-
 window.loadGraph = function (siteID, range) {
 
     range = typeof range === 'string' ? '/' + range : ''; //skookum!
@@ -244,47 +198,47 @@ window.buildGraph = function (name, responses) {
                     mode: 'label'
                 }
             }
-            // ,plugins: [
-            //     {
-            //         id: "responsiveGradient",
-            //
-            //         afterUpdate: function (chart, options) {
-            //
-            //             const scales = chart.scales;
-            //
-            //             // create a linear gradient with the dimentions of the scale
-            //             const color = chart.ctx.createLinearGradient(
-            //                 0,//scales["x-axis-0"].left,
-            //                 scales["y-axis-0"].bottom,
-            //                 0,//scales["x-axis-0"].right,
-            //                 scales["y-axis-0"].top
-            //             ); //vertical
-            //
-            //
-            //             const max = Math.max(...quickData.datasets);
-            //             const bit = 1 / max;
-            //
-            //             color.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
-            //             color.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
-            //
-            //             if (max < apdexTInMS) {
-            //                 color.addColorStop(1, safe);
-            //             } else {
-            //                 if (max >= apdexTInMS) {
-            //                     color.addColorStop(bit * apdexTInMS, warn);
-            //
-            //                     if (max >= (apdexTInMS * 2)) {
-            //                         color.addColorStop(bit * (apdexTInMS * 2), danger);
-            //                         color.addColorStop(1, danger);
-            //                     } else {
-            //                         color.addColorStop(1, warn);
-            //                     }
-            //                 }
-            //             }
-            //             chart.data.datasets[0].borderColor = color;
-            //         }
-            //     }
-            // ]
+            , plugins: [
+                {
+                    id: "responsiveGradient",
+
+                    afterUpdate: function (chart, options) {
+
+                        const scales = chart.scales;
+
+                        // create a linear gradient with the dimentions of the scale
+                        const color = chart.ctx.createLinearGradient(
+                            0,//scales["x-axis-0"].left,
+                            scales["y-axis-0"].bottom,
+                            0,//scales["x-axis-0"].right,
+                            scales["y-axis-0"].top
+                        ); //vertical
+
+
+                        const max = Math.max(...quickData.datasets);
+                        const bit = 1 / max;
+
+                        color.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
+                        color.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
+
+                        if (max < apdexTInMS) {
+                            color.addColorStop(1, safe);
+                        } else {
+                            if (max >= apdexTInMS) {
+                                color.addColorStop(bit * apdexTInMS, warn);
+
+                                if (max >= (apdexTInMS * 2)) {
+                                    color.addColorStop(bit * (apdexTInMS * 2), danger);
+                                    color.addColorStop(1, danger);
+                                } else {
+                                    color.addColorStop(1, warn);
+                                }
+                            }
+                        }
+                        chart.data.datasets[0].borderColor = color;
+                    }
+                }
+            ]
         });
     }
 };
