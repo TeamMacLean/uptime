@@ -39,21 +39,6 @@ router.route('/sites/:id/edit')
     .post(sites.editPost);
 
 
-//API
-router.route('/api/sites')
-    .all(isAuthenticatedAPI)
-    .get(api.listSites);
-
-router.route('/api/responses')
-    .all(isAuthenticatedAPI)
-    .post(api.postResponse);
-
-router.route('/api/responses/:siteID')
-    .get(api.getResponses);
-
-router.route('/api/responses/:siteID/:range')
-    .get(api.getResponses);
-
 function isAuthenticatedAPI(req, res, next) {
 
     if (req.isAuthenticated()) {

@@ -6,14 +6,12 @@ const moment = require('moment');
 const Response = thinky.createModel('Response', {
     id: type.string(),
     siteID: type.string().required(),
-    date: type.string(),
     createdAt: type.date().default(r.now()),
     updatedAt: type.date(),
     statusCode: type.number().required(),
     status: type.string().required(),
     up: type.boolean().required(),
-    responseTime: type.number().required().default(10000),
-    source: type.string().default("unknown")
+    responseTime: type.number().required().default(10000)
 });
 
 module.exports = Response;
@@ -21,9 +19,6 @@ module.exports = Response;
 Response.pre('save', function (next) {
     if (!this.up) {
         this.responseTime = 0;
-    }
-    if (!this.date) {
-        this.date = this.createdAt;
     }
     next();
 });
