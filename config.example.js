@@ -7,6 +7,9 @@ module.exports = {
     allowRegistration: false,
     apdexT: 0.2,
     selfCheck: true,
+    monitoring:{
+        interval:5
+    },
     slack: {
         enabled: false,
         webhookURL: 'N/A'
