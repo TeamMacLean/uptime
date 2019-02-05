@@ -13,7 +13,7 @@
     "cookie-parser": "~1.4.3",
     "debug": "~4.1.1",
     "ejs": "~2.6.1",
-    "express": "~4.16.0",
+    "express": "^4.16.4",
     "express-session": "^1.15.6",
     "favicon": "0.0.2",
     "favicon-url": "0.0.5",
@@ -22,15 +22,15 @@
     "morgan": "~1.9.0",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
+    "request": "latest",
     "session-rethinkdb": "^2.0.1",
-    "thinky": "^2.3.9",
-    "request": "latest"
+    "thinky": "^2.3.9"
   },
   "devDependencies": {
     "chart.js": "^2.7.3",
-    "moment": "^2.22.2",
-    "normalize.css": "^8.0.0",
-    "parcel": "^1.9.7",
+    "moment": "^2.24.0",
+    "normalize.css": "^8.0.1",
+    "parcel": "^1.11.0",
     "tippy.js": "^3.4.1"
   }
 }
