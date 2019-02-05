@@ -5,7 +5,6 @@ const basicAuth = require('basic-auth');
 
 const index = require('./controllers/index');
 const auth = require('./controllers/auth');
-const api = require('./controllers/api');
 const sites = require('./controllers/sites');
 
 const User = require('./models/user');

@@ -6,7 +6,6 @@ module.exports = {
     graphsOnIndex: true,
     allowRegistration: false,
     apdexT: 0.2,
-    selfCheck: true,
     monitoring:{
         interval:5
     },
