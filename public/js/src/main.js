@@ -178,7 +178,7 @@ window.buildGraph = function (name, responses) {
             // borderColor: '#7993F9'//quickData.colors,
 
 
-            borderColor: getGradient(window.charts[name]),//gradientStroke,
+            borderColor: safe,//gradientStroke,
             // pointBorderColor: gradientStroke,
             // pointBackgroundColor: gradientStroke,
             // pointHoverBackgroundColor: gradientStroke,
@@ -277,5 +277,6 @@ window.buildGraph = function (name, responses) {
             //     }
             // ]
         });
+        window.charts[name].borderColor = getGradient(window.charts[name]);
     }
 };
