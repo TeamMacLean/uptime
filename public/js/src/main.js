@@ -123,6 +123,36 @@ const safe = '#2CDCBE';
 const warn = '#FEDB62';
 const danger = '#FC3C63';
 
+function setGraphColors(chart, data){
+    const scales = chart.scales;
+
+    // create a linear gradient with the dimentions of the scale
+    const color = chart.ctx.createLinearGradient(
+        0,//scales["x-axis-0"].left,
+        scales["y-axis-0"].bottom,
+        0,//scales["x-axis-0"].right,
+        scales["y-axis-0"].top
+    ); //vertical
+
+    color.addColorStop(0, safe);
+    const max = Math.max(...data.datasets);
+    const bit = 1 / max;
+
+    if (max < apdexTInMS) {
+        color.addColorStop(1, safe);
+    } else {
+        if (max >= apdexTInMS) {
+            color.addColorStop(bit * apdexTInMS, warn);
+        }
+        if (max >= (apdexTInMS * 2)) {
+            color.addColorStop(bit * (apdexTInMS * 2), danger);
+            color.addColorStop(1, danger);
+        }
+    }
+
+    chart.data.datasets[0].borderColor = color;
+}
+
 window.buildGraph = function (name, responses) {
     const ctx = document.getElementById("chart-" + name).getContext('2d');
 
@@ -138,7 +168,7 @@ window.buildGraph = function (name, responses) {
         datasets: [{
             label: 'ms',
             data: quickData.datasets,
-            fill: true,//'start',
+            fill: false,//'start',
             // borderColor: '#7993F9'//quickData.colors,
 
 
@@ -155,8 +185,6 @@ window.buildGraph = function (name, responses) {
 
     if (window.charts[name]) {
         window.charts[name].data = processedData;
-
-        //todo update gradient
         window.charts[name].update();
     } else {
 
@@ -167,9 +195,6 @@ window.buildGraph = function (name, responses) {
                 legend: {
                     display: false
                 },
-                // animation: {
-                //     easing: "easeInOutBack"
-                // },
                 elements: {point: {radius: 0, hitRadius: 30, hoverRadius: 0}},
                 scales: {
                     yAxes: [{
@@ -197,49 +222,46 @@ window.buildGraph = function (name, responses) {
                 tooltip: {
                     mode: 'label'
                 }
-            }
-            , plugins: [
+            },
+            plugins: [
                 {
                     id: "responsiveGradient",
 
                     afterLayout: function (chart, options) {
 
-                        const scales = chart.scales;
+                        setGraphColors(chart, quickData);
 
-                        // create a linear gradient with the dimentions of the scale
-                        const color = chart.ctx.createLinearGradient(
-                            0,//scales["x-axis-0"].left,
-                            scales["y-axis-0"].bottom,
-                            0,//scales["x-axis-0"].right,
-                            scales["y-axis-0"].top
-                        ); //vertical
-
-
-                        const max = Math.max(...quickData.datasets);
-                        const bit = 1 / max;
-
-                        color.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
-                        color.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
-
-                        if (max < apdexTInMS) {
-                            color.addColorStop(1, safe);
-                        } else {
-                            if (max >= apdexTInMS) {
-                                color.addColorStop(bit * apdexTInMS, warn);
-
-                                if (max >= (apdexTInMS * 2)) {
-                                    color.addColorStop(bit * (apdexTInMS * 2), danger);
-                                    color.addColorStop(1, danger);
-                                } else {
-                                    color.addColorStop(1, warn);
-                                }
-                            }
-                        }
-                        chart.data.datasets[0].borderColor = color;
-                        chart.data.datasets[0].backgroundColor = color;
+                        // const scales = chart.scales;
+                        //
+                        // // create a linear gradient with the dimentions of the scale
+                        // const color = chart.ctx.createLinearGradient(
+                        //     0,//scales["x-axis-0"].left,
+                        //     scales["y-axis-0"].bottom,
+                        //     0,//scales["x-axis-0"].right,
+                        //     scales["y-axis-0"].top
+                        // ); //vertical
+                        //
+                        // color.addColorStop(0, safe);
+                        // const max = Math.max(...quickData.datasets);
+                        // const bit = 1 / max;
+                        //
+                        // if (max < apdexTInMS) {
+                        //     color.addColorStop(1, safe);
+                        // } else {
+                        //     if (max >= apdexTInMS) {
+                        //         color.addColorStop(bit * apdexTInMS, warn);
+                        //     }
+                        //     if (max >= (apdexTInMS * 2)) {
+                        //         color.addColorStop(bit * (apdexTInMS * 2), danger);
+                        //         color.addColorStop(1, danger);
+                        //     }
+                        // }
+                        //
+                        // chart.data.datasets[0].borderColor = color;
                     }
                 }
             ]
         });
+        setGraphColors(window.charts[name], quickData);
     }
 };
