@@ -134,6 +134,42 @@ window.buildGraph = function (name, responses) {
     }, {labels: [], datasets: [], colors: []});
 
 
+    function afterLayout(chart, options) {
+
+        const scales = chart.scales;
+
+        // create a linear gradient with the dimentions of the scale
+        const color = chart.ctx.createLinearGradient(
+            0,//scales["x-axis-0"].left,
+            scales["y-axis-0"].bottom,
+            0,//scales["x-axis-0"].right,
+            scales["y-axis-0"].top
+        ); //vertical
+
+
+        const max = Math.max(...quickData.datasets);
+        const bit = 1 / max;
+
+        color.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
+        color.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
+
+        if (max < apdexTInMS) {
+            color.addColorStop(1, safe);
+        } else {
+            if (max >= apdexTInMS) {
+                color.addColorStop(bit * apdexTInMS, warn);
+
+                if (max >= (apdexTInMS * 2)) {
+                    color.addColorStop(bit * (apdexTInMS * 2), danger);
+                    color.addColorStop(1, danger);
+                } else {
+                    color.addColorStop(1, warn);
+                }
+            }
+        }
+        chart.data.datasets[0].borderColor = color;
+    }
+
     const processedData = {
         labels: quickData.labels,
         datasets: [{
@@ -157,6 +193,9 @@ window.buildGraph = function (name, responses) {
     if (window.charts[name]) {
         window.charts[name].data = processedData;
         window.charts[name].update();
+
+        //call plugin
+        afterLayout();
     } else {
 
         window.charts[name] = new Chart(ctx, {
@@ -198,41 +237,7 @@ window.buildGraph = function (name, responses) {
                 {
                     id: "responsiveGradient",
 
-                    afterLayout: function (chart, options) {
-
-                        const scales = chart.scales;
-
-                        // create a linear gradient with the dimentions of the scale
-                        const color = chart.ctx.createLinearGradient(
-                            0,//scales["x-axis-0"].left,
-                            scales["y-axis-0"].bottom,
-                            0,//scales["x-axis-0"].right,
-                            scales["y-axis-0"].top
-                        ); //vertical
-
-
-                        const max = Math.max(...quickData.datasets);
-                        const bit = 1 / max;
-
-                        color.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
-                        color.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
-
-                        if (max < apdexTInMS) {
-                            color.addColorStop(1, safe);
-                        } else {
-                            if (max >= apdexTInMS) {
-                                color.addColorStop(bit * apdexTInMS, warn);
-
-                                if (max >= (apdexTInMS * 2)) {
-                                    color.addColorStop(bit * (apdexTInMS * 2), danger);
-                                    color.addColorStop(1, danger);
-                                } else {
-                                    color.addColorStop(1, warn);
-                                }
-                            }
-                        }
-                        chart.data.datasets[0].borderColor = color;
-                    }
+                    afterLayout: afterLayout
                 }
             ]
         });
