@@ -138,7 +138,7 @@ window.buildGraph = function (name, responses) {
         datasets: [{
             label: 'ms',
             data: quickData.datasets,
-            fill: false,//'start',
+            fill: true,//'start',
             // borderColor: '#7993F9'//quickData.colors,
 
 
@@ -167,9 +167,9 @@ window.buildGraph = function (name, responses) {
                 legend: {
                     display: false
                 },
-                animation: {
-                    easing: "easeInOutBack"
-                },
+                // animation: {
+                //     easing: "easeInOutBack"
+                // },
                 elements: {point: {radius: 0, hitRadius: 30, hoverRadius: 0}},
                 scales: {
                     yAxes: [{
