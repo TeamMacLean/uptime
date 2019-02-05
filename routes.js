@@ -6,7 +6,7 @@ const basicAuth = require('basic-auth');
 const index = require('./controllers/index');
 const auth = require('./controllers/auth');
 const sites = require('./controllers/sites');
-
+const api = require('./controllers/api');
 const User = require('./models/user');
 
 router.route('/')
@@ -36,6 +36,21 @@ router.route('/sites/:id/edit')
     .all(isAuthenticated)
     .get(sites.edit)
     .post(sites.editPost);
+
+//API
+router.route('/api/sites')
+    .all(isAuthenticatedAPI)
+    .get(api.listSites);
+
+router.route('/api/responses')
+    .all(isAuthenticatedAPI)
+    .post(api.postResponse);
+
+router.route('/api/responses/:siteID')
+    .get(api.getResponses);
+
+router.route('/api/responses/:siteID/:range')
+    .get(api.getResponses);
 
 
 function isAuthenticatedAPI(req, res, next) {
