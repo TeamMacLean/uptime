@@ -202,7 +202,7 @@ window.buildGraph = function (name, responses) {
                 {
                     id: "responsiveGradient",
 
-                    afterUpdate: function (chart, options) {
+                    afterLayout: function (chart, options) {
 
                         const scales = chart.scales;
 
