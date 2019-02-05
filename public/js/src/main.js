@@ -236,6 +236,7 @@ window.buildGraph = function (name, responses) {
                             }
                         }
                         chart.data.datasets[0].borderColor = color;
+                        chart.data.datasets[0].backgroundColor = color;
                     }
                 }
             ]
