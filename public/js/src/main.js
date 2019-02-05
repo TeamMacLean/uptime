@@ -195,7 +195,7 @@ window.buildGraph = function (name, responses) {
         window.charts[name].update();
 
         //call plugin
-        afterLayout();
+        afterLayout(window.charts[name]);
     } else {
 
         window.charts[name] = new Chart(ctx, {
