@@ -156,7 +156,7 @@ window.buildGraph = function (name, responses) {
     if (window.charts[name]) {
         window.charts[name].data = processedData;
 
-        //todo update gradient
+        window.charts[name].data.borderColor = safe;
         window.charts[name].update();
     } else {
 
@@ -215,11 +215,11 @@ window.buildGraph = function (name, responses) {
                         ); //vertical
 
 
-                        const max = Math.max(...quickData.datasets);
-                        const bit = 1 / max;
-
+                        const max = Math.max(...chart.data.datasets[0].data);
+                        const bit = max > 0 ? 1 / max : 0;
                         color.addColorStop(0, danger); //this is to handle timeouts where the response time is 0
                         color.addColorStop(bit, safe); //safe starting from the first step that isn't 0;
+
 
                         if (max < apdexTInMS) {
                             color.addColorStop(1, safe);
