@@ -45,7 +45,7 @@ Site.pre('save', function (next) {
 
 Site.defineStatic('cleanup', function () {
     const month = 60 * 60 * 24 * 32; //32 days
-    return this.filter(token => token('expires_on').lt(thinky.r.now().sub(month))).delete().execute();
+    return this.filter(token => token('createdAt').lt(thinky.r.now().sub(month))).delete().execute();
 });
 
 Site.define('updateStats', function () {
