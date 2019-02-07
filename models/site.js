@@ -43,59 +43,65 @@ Site.pre('save', function (next) {
 
 });
 
-Site.defineStatic('cleanup', async function () {
+Site.defineStatic('cleanup', function () {
     const month = 60 * 60 * 24 * 32; //32 days
-    await this.filter(token => token('expires_on').lt(thinky.r.now().sub(month))).delete().execute();
+    return this.filter(token => token('expires_on').lt(thinky.r.now().sub(month))).delete().execute();
 });
 
 Site.define('updateStats', function () {
     const site = this;
 
-    Site.cleanup(); //start and ignore
+    Site.cleanup()
+        .then(() => {
 
-    function averageResponse(responses) {
-        const averages = 3;
-        const sub = responses.slice(0, averages);
-        return sub.reduce((total, current) => {
-            return total + current.responseTime
-        }, 0) / averages;
 
-    }
-
-    Response
-        .orderBy({index: r.desc("createdAt")})
-        .filter({siteID: site.id})
-        .run()
-        .then(responses => {
-
-            if (responses[0].up) {
-                if (!site.up) {
-                    notifications.siteUp(site);
-                }
-                site.up = true;
-            } else {
-                if (site.up) {
-                    site.outages = site.outages + 1;
-                    notifications.siteDown(site);
-                }
-                site.up = false;
+            function averageResponse(responses) {
+                const averages = 3;
+                const sub = responses.slice(0, averages);
+                return sub.reduce((total, current) => {
+                    return total + current.responseTime
+                }, 0) / averages;
 
             }
 
-            const timesDown = responses.reduce((total, current) => {
-                if (!current.up) {
-                    total += 1;
-                }
-                return total;
-            }, 0);
+            Response
+                .orderBy({index: r.desc("createdAt")})
+                .filter({siteID: site.id})
+                .run()
+                .then(responses => {
 
-            site.uptime = 100 - ((timesDown * 100) / responses.length);
-            site.responseTime = averageResponse(responses);
-            site.up = responses[0].up;
-            site.apdex = apdex(responses);
+                    if (responses[0].up) {
+                        if (!site.up) {
+                            notifications.siteUp(site);
+                        }
+                        site.up = true;
+                    } else {
+                        if (site.up) {
+                            site.outages = site.outages + 1;
+                            notifications.siteDown(site);
+                        }
+                        site.up = false;
 
-            site.save();
+                    }
 
+                    const timesDown = responses.reduce((total, current) => {
+                        if (!current.up) {
+                            total += 1;
+                        }
+                        return total;
+                    }, 0);
+
+                    site.uptime = 100 - ((timesDown * 100) / responses.length);
+                    site.responseTime = averageResponse(responses);
+                    site.up = responses[0].up;
+                    site.apdex = apdex(responses);
+
+                    site.save();
+
+                })
+                .catch(err => {
+                    console.error(err);
+                })
         })
         .catch(err => {
             console.error(err);
