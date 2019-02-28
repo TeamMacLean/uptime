@@ -25,7 +25,19 @@ function fixBrokenImages() {
 
 window.loadGraph = function (siteID, range) {
 
+    //mark as active
+    const links = document.getElementById("card-" + siteID).getElementsByClassName('graph')[0].getElementsByClassName('link');
+    for (let link of links) {
+        if (link.innerText.toLowerCase() === range) {
+            link.classList.add("active");
+        } else {
+            link.classList.remove("active");
+        }
+    }
+
+
     range = typeof range === 'string' ? '/' + range : ''; //skookum!
+
 
     if (window.dataSets[siteID] && window.dataSets[siteID][range]) {
         buildGraph(siteID, window.dataSets[siteID][range]);
