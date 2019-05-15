@@ -44,24 +44,10 @@ Site.pre('save', function (next) {
 });
 
 Site.defineStatic('cleanup', function () {
-    // const self = this;
     const month = 60 * 60 * 24 * 32; //32 days
     return Response.filter(function (response) {
         return response('createdAt').lt(thinky.r.now().sub(month))
     }).delete().execute()
-
-    // Site.get(this.id).getJoin({
-    //     responses:true
-    // })
-    //     .then(siteWithResponses=>{
-    //         siteWithResponses.respon
-    //     })
-    //     .catch(err=>{
-    //         console.error(err);
-    //     })
-    //
-    //
-    // return this.filter(token => token('createdAt').lt(thinky.r.now().sub(month))).delete().execute();
 });
 
 Site.define('updateStats', function () {
